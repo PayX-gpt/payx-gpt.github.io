@@ -69,12 +69,12 @@ o `.env`. Depois falta criar seu usuário do painel em **Authentication → User
 Sem ele, receita e ticket médio ficam zerados — o resto do painel funciona.
 
 ```bash
-supabase functions deploy ticto-webhook --no-verify-jwt
-supabase secrets set TICTO_WEBHOOK_TOKEN=<token-secreto>
+supabase functions deploy hubla-webhook --no-verify-jwt
+supabase secrets set HUBLA_WEBHOOK_TOKEN=<token-secreto>
 ```
 
-No checkout, aponte o webhook para:
-`https://<ref>.supabase.co/functions/v1/ticto-webhook?token=<token-secreto>`
+No Hub.la, aponte o webhook para:
+`https://<ref>.supabase.co/functions/v1/hubla-webhook?token=<token-secreto>`
 
 ## Como o funil funciona
 
@@ -123,7 +123,7 @@ http://localhost:5273/?variant=C         # força uma variante de hook
 | 18 | `5m736x4h` | Etapa 17 | button, text, title |
 | 19 | `334n1a6y` | Etapa 18 (Video 4) | button, progress, script, title, video |
 | 20 | `162p2v0j` | PITCH | button, container, stopWatchTime, text, title, video |
-| 21 | — | **Link** | `https://checkout.ticto.app/OD0A4E44E` |
+| 21 | — | **Link** | `https://pay.hub.la/ZQ9jUM2t8w36Q6bcE94Y` |
 
 Botões de etapas com vídeo têm atraso proposital (30s na Etapa 6, 115s na 9,
 54s na 15, 35s na 13, 312s na 18) — é o funil original obrigando a assistir

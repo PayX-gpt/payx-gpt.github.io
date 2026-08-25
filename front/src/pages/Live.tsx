@@ -200,7 +200,7 @@ export default function Live() {
             <Receipt className="mt-0.5 h-4 w-4 shrink-0 text-sky-400" />
             <span>
               Sem vendas registradas. Receita, ticket e aprovação só saem do zero depois que o
-              <strong> webhook do Ticto</strong> estiver apontado para a função <code className="font-mono">ticto-webhook</code>.
+              <strong> webhook do Hub.la</strong> estiver apontado para a função <code className="font-mono">hubla-webhook</code>.
             </span>
           </div>
         )}
@@ -512,7 +512,7 @@ export default function Live() {
                 </table>
               ) : (
                 <div className="p-8 text-center text-sm text-white/35">
-                  Nenhuma venda ainda. Conecte o webhook do Ticto para popular esta aba.
+                  Nenhuma venda ainda. Conecte o webhook do Hub.la para popular esta aba.
                 </div>
               )}
             </div>

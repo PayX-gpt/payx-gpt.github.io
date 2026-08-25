@@ -38,5 +38,5 @@ echo
 echo "Falta ainda:"
 echo "  1. Criar seu usuário do painel em Authentication > Users"
 echo "  2. Publicar o webhook de vendas:"
-echo "     supabase functions deploy ticto-webhook --no-verify-jwt --project-ref $REF"
-echo "     supabase secrets set TICTO_WEBHOOK_TOKEN=<um-token-secreto> --project-ref $REF"
+echo "     supabase functions deploy hubla-webhook --no-verify-jwt --project-ref $REF"
+echo "     supabase secrets set HUBLA_WEBHOOK_TOKEN=<um-token-secreto> --project-ref $REF"

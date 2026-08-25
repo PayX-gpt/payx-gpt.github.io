@@ -1,11 +1,11 @@
--- Vendas do funil, alimentadas pelo webhook do checkout (Ticto).
+-- Vendas do funil, alimentadas pelo webhook do checkout (Hub.la).
 -- Sem esta tabela os cards de receita, ticket médio e taxa de aprovação
 -- não têm de onde tirar número.
 
 CREATE TABLE IF NOT EXISTS public.purchases (
   id             UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   created_at     TIMESTAMPTZ NOT NULL DEFAULT now(),
-  -- Liga a venda à sessão do funil (vai no link do checkout como session_id).
+  -- Liga a venda à sessão do funil (vai no link do checkout como gtl_sid).
   session_id     TEXT,
   transaction_id TEXT UNIQUE,
   status         TEXT NOT NULL,          -- paid | pending | refused | refunded | chargeback

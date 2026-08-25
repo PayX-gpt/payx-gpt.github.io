@@ -104,6 +104,11 @@ export function withTrackingParams(url: string): string {
       const value = data[key]
       if (value && !target.searchParams.has(key)) target.searchParams.set(key, value)
     }
+    // O webhook do Hub.la procura a sessão em `gtl_sid` e, como alternativa,
+    // em `session_id`. Mandamos os dois para amarrar a venda ao lead.
+    if (!target.searchParams.has('gtl_sid')) {
+      target.searchParams.set('gtl_sid', data.session_id)
+    }
     if (!target.searchParams.has('session_id')) {
       target.searchParams.set('session_id', data.session_id)
     }
