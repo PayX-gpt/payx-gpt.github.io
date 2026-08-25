@@ -7,16 +7,12 @@
   // ============================================================
   // Links one-click (terminam em /upsell: cobram o cartão do pedido anterior).
   const URLS = {
-    essencial: 'https://pay.hub.la/nyg6tWYBr76YS9CbvSza/upsell',   // PRO Essencial R$197
-    avancado:  'https://pay.hub.la/dW7OpZecxWNh1EPsS99R/upsell',   // PRO Avançado R$297
-    max:       'https://pay.hub.la/uGM1C446y9fsBHJOvOD/upsell',    // PRO MAX R$347
+    essencial: 'https://pay.hub.la/nyg6twYBr76YS9CbvSza/upsell',   // PRO Essencial R$197
+    avancado:  'https://pay.hub.la/dW7DpZecxWNh1EPsS99R/upsell',   // PRO Avançado R$297
+    max:       'https://pay.hub.la/uGMIC446yi9fsBHJOvOD/upsell',    // PRO MAX R$347
     decline:   '/down1'    // ← downsell 1 (PRO Avançado por R$147, 50% off)
   };
 
-  // Links anteriores, caso precise reverter rápido:
-  //   essencial: https://pay.hub.la/0Q0sJiaw24VHo5JzX2om/upsell
-  //   avancado:  https://pay.hub.la/WM335591gfmehhF8A8pZ/upsell
-  //   max:       https://pay.hub.la/C9uGXNAz6K9yCHNN8EnK/upsell
 
   const $ = function (sel) { return document.querySelector(sel); };
 
