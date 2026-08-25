@@ -7,7 +7,7 @@ caminhos curtos.
 |---|---|---|
 | `/` | Funil do quiz IA PRO | [`front/`](front) |
 | `/live` | Painel de métricas do funil | [`front/src/pages/Live.tsx`](front/src/pages/Live.tsx) |
-| `/up1/` | Upsell GUARDIÃO PRO | [`static/up1/`](static/up1) |
+| `/up1/` | Upsell GUARDIÃO PRO IA | [`static/up1/`](static/up1) |
 | `/down1/` | Downsell de recusa | [`static/down1/`](static/down1) |
 
 ## Como funciona a publicação
@@ -46,7 +46,7 @@ front/     Funil do quiz (Vite + React). Veja front/README.md.
 static/    Páginas servidas como estão
   up1/       Upsell — index.html, up1.css, up1.js
   down1/     Downsell (reaproveita o CSS do up1)
-  assets/    Logo e fotos dos depoimentos
+  assets/    Logo (SVG) e fotos dos depoimentos
   tracker.js Rastreamento de páginas do upsell
 ```
 
