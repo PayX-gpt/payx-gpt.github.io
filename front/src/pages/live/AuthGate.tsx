@@ -77,7 +77,7 @@ export function AuthGate({ children }: { children: ReactNode }) {
           </span>
           <h1 className="text-base font-bold text-white">Painel restrito</h1>
         </div>
-        <p className="mb-5 text-xs text-white/40">Entre para ver as métricas do funil.</p>
+        <p className="mb-5 text-xs text-white/40">Entre uma vez — o acesso fica salvo neste navegador.</p>
 
         <label className="mb-1 block text-[11px] text-white/50">E-mail</label>
         <input
@@ -106,7 +106,8 @@ export function AuthGate({ children }: { children: ReactNode }) {
         </button>
 
         <p className="mt-4 text-[11px] leading-relaxed text-white/25">
-          O usuário é criado em Authentication → Users, no painel do Supabase.
+          Usuário criado em Authentication → Users, no painel do Supabase. A sessão
+          fica guardada e se renova sozinha; use “Sair” para encerrar.
         </p>
       </form>
     </div>

@@ -9,7 +9,17 @@ const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined
  * demonstração, em vez de quebrar o funil.
  */
 export const supabase: SupabaseClient | null =
-  url && anonKey ? createClient(url, anonKey, { auth: { persistSession: false } }) : null
+  url && anonKey
+    ? createClient(url, anonKey, {
+        auth: {
+          // Mantém a sessão do painel no navegador e renova o token sozinho:
+          // você entra uma vez e continua conectado nos dias seguintes.
+          persistSession: true,
+          autoRefreshToken: true,
+          storageKey: 'quiz-ia-pro-painel',
+        },
+      })
+    : null
 
 export const isSupabaseConfigured = Boolean(url && anonKey)
 
