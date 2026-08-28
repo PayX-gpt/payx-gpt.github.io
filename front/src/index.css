@@ -48,3 +48,19 @@ body { margin: 0; }
   border-width: 0 0 8px 0;
 }
 .block-button-wrapper { display: flex; flex: 1 1 auto; }
+
+/* ---- Página de oferta ---- */
+
+/* As listas vêm do funil como parágrafos iniciados por ✅. Viram linhas
+   separadas, com respiro entre itens e o texto alinhado à esquerda. */
+.pitch-lista p {
+  margin: 0 0 0.9rem;
+  line-height: 1.55;
+  text-align: left;
+}
+.pitch-lista p:last-child { margin-bottom: 0; }
+.pitch-lista p:empty { display: none; }
+
+/* O preço vem numa linha só; damos ar e destaque ao valor final. */
+.pitch-preco p { margin: 0.15rem 0; line-height: 1.4; }
+.pitch-preco strong { font-size: 1.15em; }

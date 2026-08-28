@@ -23,6 +23,7 @@ import { Loading } from './blocks/Loading'
 import { StopWatch } from './blocks/StopWatch'
 import { Container } from './blocks/Container'
 import { ScriptBlock } from './blocks/Script'
+import { PitchPage, ehPaginaDeOferta } from './pages/Pitch'
 
 const funnel = (funnelData as any).funnel as Funnel
 
@@ -131,7 +132,10 @@ export default function Funnel() {
       style={{ color: theme.textColor, backgroundColor: theme.bgColor }}
     >
       <main className={`flex w-full min-w-80 max-w-lg flex-auto flex-col gap-8 sm:gap-10 md:gap-12 sm:pt-3${hasFixedWatch ? ' mt-10' : ''}`}>
-        {blocks.map((block) => {
+        {ehPaginaDeOferta(blocks) ? (
+          <PitchPage blocks={blocks} onCta={go} />
+        ) : (
+        blocks.map((block) => {
           switch (block.type) {
             case 'progressV3':
               return <Progress key={block.id} block={block} />
@@ -177,7 +181,8 @@ export default function Funnel() {
             default:
               return null
           }
-        })}
+        })
+        )}
       </main>
     </div>
   )
