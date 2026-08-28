@@ -123,7 +123,7 @@ http://localhost:5273/?variant=C         # força uma variante de hook
 | 18 | `5m736x4h` | Etapa 17 | button, text, title |
 | 19 | `334n1a6y` | Etapa 18 (Video 4) | button, progress, script, title, video |
 | 20 | `162p2v0j` | PITCH | button, container, stopWatchTime, text, title, video |
-| 21 | — | **Link** | `https://pay.hub.la/ZQ9jUM2t8w36Q6bcE94Y` |
+| 21 | — | **Link** | `https://pay.hub.la/NvDVq8Sgr7Mo4eUvOoa3` |
 
 Botões de etapas com vídeo têm atraso proposital (30s na Etapa 6, 115s na 9,
 54s na 15, 35s na 13, 312s na 18) — é o funil original obrigando a assistir
