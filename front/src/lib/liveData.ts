@@ -134,6 +134,8 @@ async function fetchAll(period: Period): Promise<RawEvent[]> {
     let q = supabase
       .from(EVENTS_TABLE)
       .select('id, created_at, session_id, event_name, event_data, page_url, user_agent')
+      // Os sinais de presença têm seu próprio fluxo, em tempo real.
+      .not('event_name', 'in', '(presence_ping,presence_left)')
       .order('created_at', { ascending: false })
       .range(page * pageSize, page * pageSize + pageSize - 1)
     if (from) q = q.gte('created_at', from.toISOString())
@@ -196,7 +198,11 @@ function parseUA(ua: string | null): { device: string; os: string; browser: stri
   return { device, os, browser }
 }
 
-export function aggregate(events: RawEvent[], purchases: Purchase[] = [], demo = false): LiveSnapshot {
+/** Sinais operacionais de presença — não entram em nenhuma métrica. */
+const EVENTOS_DE_PRESENCA = new Set(['presence_ping', 'presence_left'])
+
+export function aggregate(todosEventos: RawEvent[], purchases: Purchase[] = [], demo = false): LiveSnapshot {
+  const events = todosEventos.filter((e) => !EVENTOS_DE_PRESENCA.has(e.event_name))
   const path = engine.mainPath().filter((n) => n.type === 'page')
 
   const viewedBy = new Map<string, Set<string>>()

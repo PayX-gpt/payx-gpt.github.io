@@ -12,6 +12,10 @@ export type EventName =
   | 'loading_completed'
   | 'checkout_click'
   | 'backredirect_fired'
+  // Sinais de presenca: dizem em que etapa a sessao esta agora. Sao
+  // operacionais, nao analiticos — as agregacoes do painel os ignoram.
+  | 'presence_ping'
+  | 'presence_left'
 
 type EventData = Record<string, unknown>
 

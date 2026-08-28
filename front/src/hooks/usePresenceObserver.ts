@@ -1,74 +1,99 @@
-import { useEffect, useState } from 'react'
-import { supabase } from '../lib/supabase'
-import type { PresencePayload } from './usePresence'
+import { useCallback, useEffect, useState } from 'react'
+import { EVENTS_TABLE, supabase } from '../lib/supabase'
 
 /**
- * Lado do painel: observa o canal de presença e devolve quem está em cada
- * etapa agora. Entra no canal como observador (sem se anunciar), então o
- * próprio /live nunca é contado como visitante.
+ * Lado do painel: quem está em cada etapa agora.
+ *
+ * Lê os sinais de presença recentes e escuta `postgres_changes`, então
+ * entrada, troca de etapa e saída chegam no mesmo instante. Cada sessão vale
+ * pelo seu sinal mais recente: se for `presence_left`, saiu; se o último
+ * sinal estiver velho demais, também sai (cobre queda de rede e aba morta).
  */
 
+/** Sem sinal nesse tempo, a sessão é considerada fora. */
+const VALIDADE_MS = 50000
+/** Varre para expirar quem parou de sinalizar sem avisar. */
+const VARREDURA_MS = 3000
+
+type Sinal = {
+  session_id: string
+  event_name: string
+  event_data: { step_id?: string; step_label?: string; traffic_source?: string }
+  created_at: string
+}
+
 export type PresenceState = {
-  /** step_id -> quantidade de sessões naquela etapa neste instante. */
   countByStep: Record<string, number>
-  /** step_id -> origens de tráfego presentes ali. */
   sourcesByStep: Record<string, string[]>
-  online: PresencePayload[]
+  online: { session_id: string; step_id: string; step_label: string; traffic_source: string }[]
   total: number
 }
 
-const EMPTY: PresenceState = { countByStep: {}, sourcesByStep: {}, online: [], total: 0 }
-const OBSERVER_KEY = 'painel-observador'
+const VAZIO: PresenceState = { countByStep: {}, sourcesByStep: {}, online: [], total: 0 }
 
 export function usePresenceObserver(): PresenceState {
-  const [state, setState] = useState<PresenceState>(EMPTY)
+  const [state, setState] = useState<PresenceState>(VAZIO)
+
+  const recalcular = useCallback(async () => {
+    if (!supabase) return
+    const desde = new Date(Date.now() - VALIDADE_MS).toISOString()
+    const { data, error } = await supabase
+      .from(EVENTS_TABLE)
+      .select('session_id, event_name, event_data, created_at')
+      .in('event_name', ['presence_ping', 'presence_left'])
+      .gte('created_at', desde)
+      .order('created_at', { ascending: true })
+    if (error || !data) return
+
+    // O último sinal de cada sessão é o que vale.
+    const ultimo = new Map<string, Sinal>()
+    for (const s of data as Sinal[]) ultimo.set(s.session_id, s)
+
+    const countByStep: Record<string, number> = {}
+    const fontes: Record<string, Set<string>> = {}
+    const online: PresenceState['online'] = []
+
+    for (const [sessionId, s] of ultimo) {
+      if (s.event_name === 'presence_left') continue
+      const stepId = s.event_data?.step_id
+      if (!stepId) continue
+      countByStep[stepId] = (countByStep[stepId] ?? 0) + 1
+      if (!fontes[stepId]) fontes[stepId] = new Set()
+      const origem = s.event_data?.traffic_source ?? 'organico'
+      fontes[stepId].add(origem)
+      online.push({
+        session_id: sessionId,
+        step_id: stepId,
+        step_label: s.event_data?.step_label ?? '—',
+        traffic_source: origem,
+      })
+    }
+
+    setState({
+      countByStep,
+      sourcesByStep: Object.fromEntries(Object.entries(fontes).map(([k, v]) => [k, [...v]])),
+      online,
+      total: online.length,
+    })
+  }, [])
 
   useEffect(() => {
-    const client = supabase
-    if (!client) return
+    const cliente = supabase
+    if (!cliente) return
+    void recalcular()
 
-    const channel = client.channel('funnel-presence', {
-      config: { presence: { key: OBSERVER_KEY } },
-    })
+    const canal = cliente
+      .channel('presenca-painel')
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: EVENTS_TABLE }, () => void recalcular())
+      .subscribe()
 
-    const sync = () => {
-      const raw = channel.presenceState<PresencePayload>()
-      const countByStep: Record<string, number> = {}
-      const sources: Record<string, Set<string>> = {}
-      const online: PresencePayload[] = []
-
-      for (const [key, entries] of Object.entries(raw)) {
-        if (key === OBSERVER_KEY) continue
-        if (!entries?.length) continue
-        // Só o anúncio mais recente da sessão vale — é a etapa atual dela.
-        const latest = entries[entries.length - 1]
-        if (!latest?.step_id) continue
-        online.push(latest)
-        countByStep[latest.step_id] = (countByStep[latest.step_id] ?? 0) + 1
-        if (!sources[latest.step_id]) sources[latest.step_id] = new Set()
-        if (latest.traffic_source) sources[latest.step_id].add(latest.traffic_source)
-      }
-
-      setState({
-        countByStep,
-        sourcesByStep: Object.fromEntries(Object.entries(sources).map(([k, v]) => [k, [...v]])),
-        online,
-        total: online.length,
-      })
-    }
-
-    channel
-      .on('presence', { event: 'sync' }, sync)
-      .on('presence', { event: 'join' }, sync)
-      .on('presence', { event: 'leave' }, sync)
-      .subscribe((status) => {
-        if (status === 'SUBSCRIBED') sync()
-      })
+    const varredura = setInterval(() => void recalcular(), VARREDURA_MS)
 
     return () => {
-      void client.removeChannel(channel)
+      clearInterval(varredura)
+      void cliente.removeChannel(canal)
     }
-  }, [])
+  }, [recalcular])
 
   return state
 }
