@@ -54,6 +54,10 @@ export function ButtonBlock({ block, onClick }: { block: Block; onClick: () => v
     const elapsed = total > 0 ? ((total - left) / total) * 100 : 0
     const mm = Math.floor(left / 60)
     const ss = String(left % 60).padStart(2, '0')
+    // Espera longa não mostra o número: ver "5:12" faz o lead desistir antes
+    // de começar. A barra continua enchendo, então o retorno visual fica.
+    const ESPERA_LONGA = 120
+    const rotulo = total > ESPERA_LONGA ? 'Aguarde' : `Aguarde ${mm > 0 ? `${mm}:${ss}` : `${left}s`}`
     return (
       <div id={block.id} className="flex flex-auto justify-center scroll-mt-7">
         <div className="flex max-w-lg flex-auto flex-col items-center gap-2">
@@ -61,9 +65,7 @@ export function ButtonBlock({ block, onClick }: { block: Block; onClick: () => v
             className="flex w-full flex-auto items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.06] py-5 text-center font-bold"
             aria-live="polite"
           >
-            <span className="text-sm opacity-70">
-              Aguarde {mm > 0 ? `${mm}:${ss}` : `${left}s`}
-            </span>
+            <span className="text-sm opacity-70">{rotulo}</span>
           </div>
           <div className="h-1 w-full overflow-hidden rounded-full bg-white/10">
             <div
