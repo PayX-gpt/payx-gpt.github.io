@@ -197,6 +197,22 @@ svg{display:block}
 .locksheet .go{display:flex;align-items:center;justify-content:center;gap:9px;min-height:58px;background:var(--gold);color:#1A1400;font-size:18px;font-weight:800;border-radius:14px}
 .locksheet .go svg{width:22px;height:22px}
 .locksheet .cancel{margin-top:11px;min-height:52px;width:100%;background:transparent;border:1px solid var(--line);color:var(--muted);font-size:16px;font-weight:700;border-radius:14px}
+
+/* Offer explainer sheet */
+.offersheet{width:100%;max-width:var(--wrap);max-height:92vh;overflow-y:auto;background:var(--bg);border-top-left-radius:26px;border-top-right-radius:26px;border-top:1px solid var(--line-2);padding:22px 20px calc(26px + env(safe-area-inset-bottom));animation:up .28s ease}
+.offersheet .otop{display:flex;justify-content:flex-end}
+.offersheet .otop .x{width:44px;height:44px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);color:var(--text);display:grid;place-items:center}
+.offersheet .otop .x svg{width:22px;height:22px}
+.offersheet .tag{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:rgba(245,197,66,.14);padding:6px 12px;border-radius:999px;margin-top:2px}
+.offersheet h3{font-size:26px;font-weight:900;margin:12px 0 8px;line-height:1.15}
+.offersheet .odesc{font-size:16px;color:var(--muted);margin:0 0 18px;line-height:1.5}
+.offersheet .olist{list-style:none;padding:0;margin:0 0 22px;display:flex;flex-direction:column;gap:12px}
+.offersheet .olist li{display:flex;gap:11px;align-items:flex-start;font-size:16px;line-height:1.4}
+.offersheet .olist li .ck{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;margin-top:1px}
+.offersheet .olist li .ck svg{width:16px;height:16px}
+.offersheet .go{display:flex;align-items:center;justify-content:center;gap:9px;min-height:60px;background:var(--gold);color:#1A1400;font-size:18px;font-weight:900;border-radius:14px}
+.offersheet .go svg{width:22px;height:22px}
+.offersheet .cancel{margin-top:11px;min-height:52px;width:100%;background:transparent;border:1px solid var(--line);color:var(--muted);font-size:16px;font-weight:700;border-radius:14px}
 </style>
 </head>
 <body>
@@ -287,6 +303,18 @@ window.GUIA_CONFIG={
   </div>
 </div>
 
+<div class="overlay" id="offerOverlay" role="dialog" aria-modal="true">
+  <div class="offersheet">
+    <div class="otop"><button class="x" id="ofClose" aria-label="Fechar"><span id="icX2"></span></button></div>
+    <span class="tag" id="ofTag"></span>
+    <h3 id="ofTitle"></h3>
+    <p class="odesc" id="ofDesc"></p>
+    <ul class="olist" id="ofList"></ul>
+    <a class="go" id="ofGo" href="#" target="_blank" rel="noopener"><span id="icArrow3"></span> <span id="ofCta"></span></a>
+    <button class="cancel" id="ofCancel">Agora não</button>
+  </div>
+</div>
+
 <script>
 (function(){
   var CFG=window.GUIA_CONFIG;
@@ -314,15 +342,16 @@ window.GUIA_CONFIG={
   $('brandMk').innerHTML=I(G.shield,{sw:1.7});$('icSearch').innerHTML=ic('search');$('icSearch2').innerHTML=ic('search');
   $('icLock').innerHTML=ic('lock');$('icArrow').innerHTML=ic('arrow');$('icArrow2').innerHTML=ic('arrow');
   $('icWa').innerHTML=G.wa;$('icX').innerHTML=ic('x');$('icCheckBig').innerHTML=ic('checkC');$('icLockBig').innerHTML=ic('lock');
+  $('icX2').innerHTML=ic('x');$('icArrow3').innerHTML=ic('arrow');
 
   var LESSONS=[
     {key:"boas-vindas",step:1,cat:"passo",title:"Boas-vindas + próximos passos",short:"Boas-vindas",desc:"Comece por aqui. Em poucos minutos você entende como tudo funciona.",vid:"YlzjoIm0HYY",
       next:"Ótimo começo! Agora vamos abrir a sua conta na corretora. Toque em “Próximo passo”.",
-      act:[{t:"Conhecer o Guardião PRO",u:CFG.proOffer,k:"gold",i:"shield"}],
+      act:[{t:"Conhecer o Guardião PRO",offer:"pro",k:"gold",i:"shield"}],
       kw:["comecar","começar","inicio","início","primeiro","por onde","perdido","boas vindas","apresentacao","introducao","o que e","como funciona","como começar","como comecar"]},
     {key:"abrir-conta",step:2,cat:"passo",title:"Abrir sua conta na corretora",short:"Abrir conta",desc:"O passo a passo para criar sua conta, com calma.",vid:"Q86zFE_kz4E",
       next:"Conta criada? Agora vamos colocar seu primeiro dinheiro na conta (o depósito).",
-      act:[{t:"Abrir minha conta na corretora",u:CFG.brokerConta,k:"primary",i:"userplus",note:"Abra a conta por este botão para ter a assessoria exclusiva da corretora."},{t:"Conhecer o Guardião PRO",u:CFG.proOffer,k:"gold",i:"shield"}],
+      act:[{t:"Abrir minha conta na corretora",u:CFG.brokerConta,k:"primary",i:"userplus",note:"Abra a conta por este botão para ter a assessoria exclusiva da corretora."},{t:"Conhecer o Guardião PRO",offer:"pro",k:"gold",i:"shield"}],
       kw:["abrir conta","criar conta","cadastro","cadastrar","conta","corretora","hantec","hmarkets","registro","registrar","abertura"]},
     {key:"deposito",step:3,cat:"passo",title:"Fazer seu primeiro depósito",short:"Depósito",desc:"Como colocar dinheiro na sua conta para o Guardião poder operar.",vid:"6U3zhZcIjJA",
       next:"Dinheiro na conta? Agora vamos ativar o Guardião para ele trabalhar por você.",
@@ -362,14 +391,21 @@ window.GUIA_CONFIG={
 
   // Progresso por PESSOA: cada cliente recebe do suporte um link com ?u=<id>.
   // Assim o progresso é isolado por pessoa mesmo num aparelho compartilhado; sem ?u fica por navegador.
-  function userToken(){var m=/(?:^|[?&])u=([^&]+)/.exec(location.search);return m?decodeURIComponent(m[1]).replace(/[^A-Za-z0-9_.-]/g,"").slice(0,64):null;}
+  function userToken(){var m=/(?:^|[?&])u=([^&]+)/.exec(location.search);return m?decodeURIComponent(m[1]).replace(/[^A-Za-z0-9_.-]/g,"").slice(0,80):null;}
   var UT=userToken();
   var PKEY="guia_progress_v2"+(UT?("_"+UT):"");
   function loadP(){try{return JSON.parse(localStorage.getItem(PKEY))||{done:[],last:null};}catch(e){return{done:[],last:null};}}
   function saveP(p){try{localStorage.setItem(PKEY,JSON.stringify(p));}catch(e){}}
   var P=loadP();
+  // Sincronização no banco (cross-device + visível no CRM). Só quando o link tem ?u=<id>.
+  var SUPA_URL="https://cugunubcspfsgtwntics.supabase.co/rest/v1/rpc";
+  var SUPA_ANON="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1Z3VudWJjc3Bmc2d0d250aWNzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzExMDMxNzksImV4cCI6MjA4NjY3OTE3OX0.l3ZVcP_p_6JRhjnlIuLtCyh4mkR6Zr7e2TeQH_cYGo4";
+  function supaRPC(fn,body){return fetch(SUPA_URL+"/"+fn,{method:"POST",headers:{apikey:SUPA_ANON,Authorization:"Bearer "+SUPA_ANON,"Content-Type":"application/json"},body:JSON.stringify(body)});}
+  var pushT=null;
+  function syncPush(){if(!UT)return;if(pushT)clearTimeout(pushT);pushT=setTimeout(function(){supaRPC("guia_save",{p_uid:UT,p_done:P.done,p_last:P.last}).catch(function(){});},400);}
+  function syncPull(cb){if(!UT){cb&&cb();return;}supaRPC("guia_get",{p_uid:UT}).then(function(r){return r.json();}).then(function(rows){if(rows&&rows[0]){var sd=rows[0].done||[];sd.forEach(function(k){if(P.done.indexOf(k)<0)P.done.push(k);});if(rows[0].last&&!P.last)P.last=rows[0].last;saveP(P);}cb&&cb();}).catch(function(){cb&&cb();});}
   function isDone(k){return P.done.indexOf(k)>=0;}
-  function markDone(k){if(!isDone(k)){P.done.push(k);saveP(P);}}
+  function markDone(k){if(!isDone(k)){P.done.push(k);saveP(P);syncPush();}}
   function thumb(l){return l.vid?("https://i.ytimg.com/vi/"+l.vid+"/hqdefault.jpg"):null;}
   function supportHref(msg){var t=encodeURIComponent(msg||"Olá! Preciso de ajuda com o Guardião.");return CFG.supportWhatsapp?("https://wa.me/"+CFG.supportWhatsapp+"?text="+t):("mailto:"+CFG.supportEmail+"?subject="+encodeURIComponent("Ajuda - Guardião")+"&body="+t);}
   function norm(s){return (s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");}
@@ -403,7 +439,7 @@ window.GUIA_CONFIG={
   }
   function renderStepsRow(){var el=$('stepsRow');el.innerHTML="";var nk=nextStepKey();STEPS.forEach(function(l){el.appendChild(card(l,{current:l.key===nk}));});}
   function renderRow(id,items){var el=$(id);el.innerHTML="";items.forEach(function(l){el.appendChild(card(l,{locked:true}));});}
-  function openLockedItem(l){var t=offerFor(l);if(t){window.open(t,"_blank","noopener");}else{openLock();}}
+  function openLockedItem(l){if(l&&l.cat==="curso"){openOffer("mente");}else if(l&&l.key==="guardiao-pro"){openOffer("pro");}else{openLock();}}
 
   /* Busca */
   function searchLessons(q){q=norm(q).trim();if(!q)return[];var terms=q.split(/\s+/).filter(Boolean);
@@ -478,13 +514,16 @@ window.GUIA_CONFIG={
     var rest=STEPS.filter(function(s){return !isDone(s.key);}).length;
     $('tlinfo').innerHTML='<b>Passo '+l.step+' de '+STEPS.length+'</b>'+(rest>0?(' · faltam '+rest+(rest>1?' aulas':' aula')):' · tudo concluído');}
   function renderActions(l){var box=$('lActions');box.innerHTML="";if(!l.act||!l.act.length){box.hidden=true;return;}box.hidden=false;
-    l.act.forEach(function(a){var el=document.createElement("a");el.className="abtn "+(a.k||"primary");el.href=a.u;el.target="_blank";el.rel="noopener";el.innerHTML=ic(a.i||"arrow")+" <span>"+a.t+"</span>";box.appendChild(el);if(a.note){var n=document.createElement("p");n.className="anote";n.textContent=a.note;box.appendChild(n);}});}
+    l.act.forEach(function(a){var el;
+      if(a.offer){el=document.createElement("button");el.className="abtn "+(a.k||"primary");el.innerHTML=ic(a.i||"arrow")+" <span>"+a.t+"</span>";el.addEventListener("click",function(){openOffer(a.offer);});}
+      else{el=document.createElement("a");el.className="abtn "+(a.k||"primary");el.href=a.u;el.target="_blank";el.rel="noopener";el.innerHTML=ic(a.i||"arrow")+" <span>"+a.t+"</span>";}
+      box.appendChild(el);if(a.note){var n=document.createElement("p");n.className="anote";n.textContent=a.note;box.appendChild(n);}});}
   function renderUpNext(l){var box=$('up'),h=$('upH');box.innerHTML="";var rest=STEPS.filter(function(s){return s.step>l.step;});if(!rest.length){h.hidden=true;return;}h.hidden=false;
     rest.forEach(function(s){box.appendChild(card(s,{current:!isDone(s.key)&&s.step===l.step+1}));});}
   function nextStepOf(l){return STEPS.find(function(s){return s.step===l.step+1;})||null;}
   function openLesson(key){
     var l=BY[key];if(!l||locked(l)){openLockedItem(l||{});return;}
-    current=l;P.last=key;saveP(P);
+    current=l;P.last=key;saveP(P);syncPush();
     $('stepLbl').textContent="Passo "+l.step+" de "+STEPS.length;
     renderTimeline(l);renderActions(l);renderUpNext(l);
     $('lTitle').textContent=l.title;
@@ -503,11 +542,28 @@ window.GUIA_CONFIG={
   $('markBtn').addEventListener("click",function(){if(!current)return;markDone(current.key);var mb=$('markBtn');mb.classList.add("on");mb.innerHTML=ic('check')+" Passo concluído";renderHero();renderTimeline(current);renderUpNext(current);var nx=nextStepOf(current);if(nx)setTimeout(function(){openLesson(nx.key);},350);});
   $('helpBtn').addEventListener("click",function(){window.open(supportHref(current?("Olá! Estou na aula \""+current.title+"\" e preciso de ajuda."):null),"_blank");});
 
+  function restoreScroll(){document.body.style.overflow=(overlay.classList.contains('show')||lockOv.classList.contains('show')||offerOv.classList.contains('show'))?"hidden":"";}
   var lockOv=$('lockOverlay');
   function openLock(){$('lockGo').setAttribute("href",CFG.fullMembersUrl);lockOv.classList.add("show");document.body.style.overflow="hidden";}
-  function closeLock(){lockOv.classList.remove("show");document.body.style.overflow="";}
+  function closeLock(){lockOv.classList.remove("show");restoreScroll();}
   $('lockCancel').addEventListener("click",closeLock);
   lockOv.addEventListener("click",function(e){if(e.target===lockOv)closeLock();});
+
+  // Popup explicativo da oferta (a pessoa entende antes de ir pra página)
+  var OFFERS={
+    mente:{tag:"Curso de Trading",title:"Mente do Guardião",desc:"O curso que te ensina a operar com segurança e a entender tudo o que o Guardião faz por você, do zero ao avançado.",items:["Análise de mercado e leitura de gráficos","Gestão de risco pra proteger o seu dinheiro","Como executar ordens e evitar cenários ruins","Aulas no seu ritmo, pra assistir quando quiser"],cta:"Ver a oferta",url:CFG.menteOffer},
+    pro:{tag:"Versão turbinada do robô",title:"Guardião PRO",desc:"O Guardião configurado no ponto máximo pra trabalhar mais forte por você e buscar resultados melhores.",items:["Robô otimizado, opera de forma mais ativa","Configuração avançada no ponto máximo","Acompanhamento e suporte de perto","Feito pra quem quer acelerar os resultados"],cta:"Ver a oferta",url:CFG.proOffer}
+  };
+  var offerOv=$('offerOverlay');
+  function openOffer(kind){var o=OFFERS[kind];if(!o){openLock();return;}
+    $('ofTag').textContent=o.tag;$('ofTitle').textContent=o.title;$('ofDesc').textContent=o.desc;$('ofCta').textContent=o.cta;$('ofGo').setAttribute("href",o.url);
+    var ul=$('ofList');ul.innerHTML="";o.items.forEach(function(it){var li=document.createElement("li");li.innerHTML='<span class="ck">'+ic('check')+'</span><span>'+it+'</span>';ul.appendChild(li);});
+    offerOv.classList.add("show");document.body.style.overflow="hidden";}
+  function closeOffer(){offerOv.classList.remove("show");restoreScroll();}
+  $('ofClose').addEventListener("click",closeOffer);
+  $('ofCancel').addEventListener("click",closeOffer);
+  $('ofGo').addEventListener("click",function(){setTimeout(closeOffer,60);});
+  offerOv.addEventListener("click",function(e){if(e.target===offerOv)closeOffer();});
   $('fullBtn').addEventListener("click",function(){window.location.href=CFG.fullMembersUrl;});
   $('fab').addEventListener("click",function(){window.open(supportHref(),"_blank");});
   $('q').addEventListener("input",function(){renderResults(this.value);});
@@ -515,6 +571,7 @@ window.GUIA_CONFIG={
   function deepKey(){var q=/(?:^|[?&])aula=([^&]+)/.exec(location.search);if(q)return decodeURIComponent(q[1]);var h=/(?:^|[#&])aula=([^&]+)/.exec(location.hash);return h?decodeURIComponent(h[1]):null;}
   function renderAll(){renderHero();renderStepsRow();renderRow("curso",LESSONS.filter(function(l){return l.cat==="curso";}));renderRow("extras",LESSONS.filter(function(l){return l.cat==="extra";}));}
   renderAll();
+  syncPull(function(){renderAll();});
   var dk=deepKey();if(dk&&BY[dk]){locked(BY[dk])?openLockedItem(BY[dk]):openLesson(dk);}
   window.addEventListener("hashchange",function(){var k=deepKey();if(k&&BY[k]){locked(BY[k])?openLockedItem(BY[k]):openLesson(k);}});
 })();
