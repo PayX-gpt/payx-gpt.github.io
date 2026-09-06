@@ -10,10 +10,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ==========================================================
-   GUARDIÃO — Guia Rápido (área de membros, público 50+)
-   Contatos: window.GUIA_CONFIG (logo abaixo do <body>).
-   ========================================================== */
 :root{
   --bg:#070A08; --bg-2:#0C110E; --surface:#121A15; --surface-2:#1A241E; --surface-3:#243029;
   --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.16);
@@ -23,9 +19,7 @@
   --radius:22px; --radius-sm:16px; --tap:60px; --wrap:600px; --wa:#25D366;
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text);
-  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
-  font-size:18px;line-height:1.5;-webkit-text-size-adjust:100%}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;font-size:18px;line-height:1.5;-webkit-text-size-adjust:100%}
 body{overflow-x:hidden}
 img{max-width:100%;display:block}
 button{font-family:inherit;cursor:pointer;color:inherit}
@@ -38,51 +32,50 @@ svg{display:block}
 
 /* Header */
 .top{position:sticky;top:0;z-index:40;background:linear-gradient(180deg,rgba(7,10,8,.96),rgba(7,10,8,.72) 70%,transparent);backdrop-filter:blur(8px)}
-.top .wrap{padding:14px 16px 16px;display:flex;align-items:center;gap:11px}
+.top .wrap{padding:12px 16px 14px;display:flex;align-items:center;gap:11px}
 .logo{display:flex;align-items:center;gap:10px}
-.logo .mk{width:34px;height:34px;color:var(--green)}
-.logo .wm{font-size:19px;font-weight:900;letter-spacing:.15em;line-height:1}
+.logo .mk{width:32px;height:32px;color:var(--green)}
+.logo .wm{font-size:18px;font-weight:900;letter-spacing:.15em;line-height:1}
 .logo .wm small{display:block;font-size:10px;letter-spacing:.28em;color:var(--muted-2);font-weight:800;margin-top:3px}
 
 /* HERO */
-.hero{position:relative;border-radius:var(--radius);overflow:hidden;min-height:430px;display:flex;align-items:flex-end;background:#0f1712;border:1px solid var(--line)}
+.hero{position:relative;border-radius:var(--radius);overflow:hidden;min-height:380px;display:flex;align-items:flex-end;background:#0f1712;border:1px solid var(--line);margin-top:6px}
 .hero .bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.02)}
-.hero .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,10,8,.12) 0%,rgba(7,10,8,.55) 45%,rgba(7,10,8,.97) 100%)}
-.hero .ct{position:relative;width:100%;padding:22px 20px 22px}
+.hero .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,10,8,.12) 0%,rgba(7,10,8,.55) 42%,rgba(7,10,8,.97) 100%)}
+.hero .ct{position:relative;width:100%;padding:20px 18px 20px}
 .hero .kick{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--bg);background:var(--green);padding:6px 11px;border-radius:999px}
-.hero h1{font-size:27px;font-weight:900;line-height:1.18;margin:14px 0 6px}
-.hero .sub{font-size:16px;color:#d7e0da;margin:0 0 18px;max-width:34ch}
+.hero h1{font-size:26px;font-weight:900;line-height:1.18;margin:12px 0 6px}
+.hero .sub{font-size:16px;color:#d7e0da;margin:0 0 16px;max-width:34ch}
 .hero .play{width:100%;min-height:var(--tap);border:none;border-radius:15px;background:var(--green);color:#04130A;font-size:19px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 10px 26px rgba(37,208,111,.28)}
 .hero .play svg{width:26px;height:26px;flex:0 0 auto}
-.hero .metaline{display:flex;align-items:center;gap:12px;margin-top:14px}
+.hero .metaline{display:flex;align-items:center;gap:12px;margin-top:13px}
 .hero .barwrap{flex:1;height:8px;background:rgba(255,255,255,.16);border-radius:999px;overflow:hidden}
 .hero .bar{height:100%;width:0;background:var(--green);border-radius:999px;transition:width .5s}
 .hero .ptxt{font-size:14px;font-weight:800;color:#cdd6d0;white-space:nowrap}
 
-/* Search */
-.search{margin:26px 0 4px}
-.search h2{font-size:20px;font-weight:800;margin:0 0 10px;display:flex;align-items:center;gap:9px}
-.search h2 svg{width:22px;height:22px;color:var(--green)}
+/* Search (compacto) */
+.search{margin:14px 0 2px}
 .sbox{position:relative}
-.sbox>svg{position:absolute;left:17px;top:50%;transform:translateY(-50%);width:22px;height:22px;color:var(--muted-2)}
-.sbox input{width:100%;min-height:var(--tap);padding:0 16px 0 52px;font-size:17px;color:var(--text);background:var(--surface);border:2px solid var(--line-2);border-radius:16px}
+.sbox>svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--muted-2)}
+.sbox input{width:100%;min-height:52px;padding:0 14px 0 46px;font-size:16px;color:var(--text);background:var(--surface);border:1.5px solid var(--line-2);border-radius:14px}
 .sbox input::placeholder{color:var(--muted-2)}
-.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
-.chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:10px 15px;font-size:15px;font-weight:600}
-.chip svg{width:18px;height:18px;color:var(--green)}
-.chip:active{background:var(--surface-3)}
+.chips{display:flex;gap:8px;overflow-x:auto;flex-wrap:nowrap;margin:10px -16px 0;padding:0 16px 4px;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none;height:0}
+.chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-size:14px;font-weight:600;white-space:nowrap}
+.chip svg{width:17px;height:17px;color:var(--green)}
 .chip.hot{background:var(--green-soft);border-color:rgba(37,208,111,.4)}
-.results{margin-top:14px;display:none;flex-direction:column;gap:10px}
+.results{margin-top:12px;display:none;flex-direction:column;gap:10px}
 .results.show{display:flex}
 .res-empty{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px;font-size:16px;color:var(--muted)}
 
 /* Section head */
-.sec{display:flex;align-items:center;gap:9px;margin:32px 0 14px}
+.sec{display:flex;align-items:center;gap:9px;margin:24px 0 13px}
 .sec h2{font-size:22px;font-weight:800;margin:0}
 .sec .kick{font-size:12px;font-weight:900;letter-spacing:.16em;color:var(--green);text-transform:uppercase;margin:0 0 3px}
-.sec .lk{color:var(--gold);width:20px;height:20px}
+.sec .sm{font-size:13px;color:var(--muted-2);font-weight:600}
+.sec .lk{color:var(--gold);width:20px;height:20px;margin-left:auto}
 
-/* Cover cards (passos) */
+/* Cover cards */
 .covers{display:flex;flex-direction:column;gap:16px}
 .cover{position:relative;background:#0f1712;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;text-align:left;width:100%;display:block}
 .cover .img{aspect-ratio:16/9;background-size:cover;background-position:center;position:relative;background-color:#12201a}
@@ -97,7 +90,7 @@ svg{display:block}
 .cover .meta .s{font-size:15px;color:var(--muted);margin-top:6px}
 .cover.done{border-color:rgba(37,208,111,.4)}
 
-/* Rails (locked) */
+/* Rails */
 .rail{display:flex;gap:13px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:2px 16px 10px;margin:0 -16px}
 .rail::-webkit-scrollbar{height:0;display:none}
 .tile{flex:0 0 70%;max-width:240px;scroll-snap-align:start;background:#0f1712;border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;text-align:left}
@@ -110,14 +103,14 @@ svg{display:block}
 .fallback{display:grid;place-items:center;background:linear-gradient(135deg,#0e2a1c,#0a1712)}
 .fallback>svg{width:40px;height:40px;color:rgba(255,255,255,.5)}
 
-/* Full members CTA */
-.full{margin-top:30px;background:linear-gradient(135deg,rgba(245,197,66,.14),transparent);border:1px solid var(--line-2);border-radius:var(--radius);padding:20px;display:flex;gap:15px;align-items:center;width:100%;text-align:left}
+/* Full CTA */
+.full{margin-top:28px;background:linear-gradient(135deg,rgba(245,197,66,.14),transparent);border:1px solid var(--line-2);border-radius:var(--radius);padding:20px;display:flex;gap:15px;align-items:center;width:100%;text-align:left}
 .full .ic{flex:0 0 auto;width:48px;height:48px;border-radius:13px;background:rgba(245,197,66,.16);color:var(--gold);display:grid;place-items:center}
 .full .ic svg{width:26px;height:26px}
 .full .tx{flex:1;min-width:0}.full .tx .t{font-size:17px;font-weight:800}.full .tx .s{font-size:14px;color:var(--muted);margin-top:2px}
 .full .go{flex:0 0 auto;color:var(--gold)}.full .go svg{width:26px;height:26px}
 
-.foot{margin-top:34px;text-align:center;color:var(--muted-2);font-size:14px;line-height:1.7}
+.foot{margin-top:32px;text-align:center;color:var(--muted-2);font-size:14px;line-height:1.7}
 .foot b{color:var(--muted)}
 
 /* FAB */
@@ -135,7 +128,7 @@ svg{display:block}
 .sheet-top .x svg{width:22px;height:22px}
 .sheet h3{font-size:22px;font-weight:800;line-height:1.25;margin:14px 0 12px}
 
-/* Timeline (linha do tempo dos passos) */
+/* Timeline */
 .tl{display:flex;align-items:center;gap:0;margin:2px 0 8px}
 .tl .node{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:15px;font-weight:900;background:var(--surface-2);border:2px solid var(--line-2);color:var(--muted)}
 .tl .node.done{background:var(--green);border-color:var(--green);color:#04130A}
@@ -146,28 +139,41 @@ svg{display:block}
 .tlinfo{font-size:14px;font-weight:700;color:var(--muted);margin:0 0 12px}
 .tlinfo b{color:var(--text)}
 
-/* Player próprio (esconde o YouTube) */
+/* Player */
 .player{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
 .player #ytmount,.player #ytmount iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .player .tap{position:absolute;inset:0;z-index:2;background:transparent}
 .player .big{position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:rgba(37,208,111,.95);color:#04130A;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.5);border:none}
 .player .big svg{width:34px;height:34px}
-.player .ctrls{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:12px 14px 12px;display:flex;align-items:center;gap:11px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.72))}
-.player .mini{width:38px;height:38px;flex:0 0 auto;border:none;background:transparent;color:#fff;display:grid;place-items:center}
-.player .mini svg{width:26px;height:26px}
-.player .bar{flex:1;height:20px;display:flex;align-items:center;cursor:pointer}
-.player .bar .track{width:100%;height:6px;background:rgba(255,255,255,.28);border-radius:999px;position:relative}
+.player .ctrls{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:10px 12px 11px;display:flex;align-items:center;gap:10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.72));transition:opacity .3s;opacity:1}
+.player .ctrls.hide{opacity:0;pointer-events:none}
+.player .mini{width:36px;height:36px;flex:0 0 auto;border:none;background:transparent;color:#fff;display:grid;place-items:center}
+.player .mini svg{width:25px;height:25px}
+.player .bar{flex:1;height:22px;display:flex;align-items:center;cursor:pointer;touch-action:none}
+.player .bar .track{width:100%;height:6px;background:rgba(255,255,255,.3);border-radius:999px;position:relative}
 .player .bar .fill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--green);border-radius:999px}
 .player .bar .knob{position:absolute;top:50%;width:16px;height:16px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);left:0;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 .player .time{flex:0 0 auto;font-size:13px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums}
-.player .load{position:absolute;inset:0;z-index:4;display:grid;place-items:center;background:#000}
+.player .poster{position:absolute;inset:0;z-index:6;background-size:cover;background-position:center;background-color:#12201a;display:grid;place-items:center}
+.player .poster .pg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,10,8,.2),rgba(7,10,8,.55))}
+.player .poster .pplay{position:relative;display:flex;align-items:center;gap:10px;background:rgba(37,208,111,.97);color:#04130A;border:none;border-radius:999px;padding:14px 24px;font-size:17px;font-weight:800;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.player .poster .pplay svg{width:26px;height:26px}
+.player .load{position:absolute;inset:0;z-index:7;display:grid;place-items:center;background:#000}
 .player .load .sp{width:44px;height:44px;border-radius:50%;border:4px solid rgba(255,255,255,.2);border-top-color:var(--green);animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.player .err{position:absolute;inset:0;z-index:5;display:grid;place-content:center;justify-items:center;gap:12px;text-align:center;padding:22px;background:#0b0f0c}
+.player .err{position:absolute;inset:0;z-index:8;display:grid;place-content:center;justify-items:center;gap:12px;text-align:center;padding:22px;background:#0b0f0c}
 .player .err p{margin:0;color:var(--muted);font-size:15px}
 .player .err button{min-height:48px;padding:0 18px;border:none;border-radius:12px;background:var(--green);color:#04130A;font-weight:800;font-size:16px}
 
-.nb{margin:18px 0 6px;background:var(--green-soft);border:1px solid rgba(37,208,111,.34);border-radius:16px;padding:16px;display:flex;gap:12px}
+/* Botões de ação (corretora/oferta) */
+.lact{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.abtn{width:100%;min-height:60px;border:none;border-radius:14px;font-size:17px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;text-align:center;padding:0 14px}
+.abtn svg{width:22px;height:22px;flex:0 0 auto}
+.abtn.primary{background:var(--green);color:#04130A}
+.abtn.gold{background:transparent;color:var(--gold);border:2px solid rgba(245,197,66,.5)}
+.anote{font-size:13.5px;color:var(--muted);margin:-2px 2px 4px;text-align:center;line-height:1.4}
+
+.nb{margin:16px 0 6px;background:var(--green-soft);border:1px solid rgba(37,208,111,.34);border-radius:16px;padding:16px;display:flex;gap:12px}
 .nb .ic{flex:0 0 auto;color:var(--green)}.nb .ic svg{width:24px;height:24px}
 .nb .h{font-size:13px;font-weight:900;color:var(--green);letter-spacing:.06em;text-transform:uppercase;margin:0 0 4px}
 .nb .c{font-size:16px;margin:0}
@@ -177,7 +183,6 @@ svg{display:block}
 .btn-done{background:var(--green);color:#04130A}.btn-done.on{background:var(--surface-3);color:var(--text);border:1px solid var(--line-2)}
 .btn-next{background:var(--gold);color:#1A1400}.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
 
-/* Próximas aulas (dentro do popup) */
 .up-h{font-size:14px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:20px 0 10px}
 .up{display:flex;flex-direction:column;gap:9px}
 .uprow{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:11px 13px;text-align:left;width:100%}
@@ -199,11 +204,16 @@ svg{display:block}
 </head>
 <body>
 <script>
-/* ====== CONFIG: edite os contatos aqui ====== */
+/* ====== CONFIG ====== */
 window.GUIA_CONFIG={
-  supportWhatsapp:"",  /* WhatsApp do suporte, só dígitos com DDI. Ex: "5511999998888". Vazio = usa e-mail. */
+  supportWhatsapp:"5585920100979",
   supportEmail:"suporte@guardiao.blackboxmembers.com.br",
-  fullMembersUrl:"https://guardiao.blackboxmembers.com.br/login"
+  fullMembersUrl:"https://guardiao.blackboxmembers.com.br/login",
+  menteOffer:"https://payx-gpt.github.io/ganhostempolivre/up2a/",
+  proOffer:"https://payx-gpt.github.io/up1/",
+  brokerConta:"https://hmarkets.com/pt/live-account-pre-registration/?refid=14979&cmp=6i6y4y8n&ent=hm",
+  brokerAtivar:"https://social.hmarkets.com/portal/login",
+  brokerDeposito:"https://hmpages.hmarkets.com/deposit-bonus-offer/?bonus_campaign=cm-46090&cmp=6i6y4y8n&refid=14979&ent=hm"
 };
 </script>
 
@@ -224,9 +234,8 @@ window.GUIA_CONFIG={
   </section>
 
   <section class="search">
-    <h2><span id="icHelp"></span> Ficou com dúvida?</h2>
     <div class="sbox"><span id="icSearch"></span>
-      <input id="q" type="search" inputmode="search" autocomplete="off" placeholder="Escreva sua dúvida (ex.: como sacar)" aria-label="Buscar sua dúvida">
+      <input id="q" type="search" inputmode="search" autocomplete="off" placeholder="Buscar aula ou dúvida (ex.: como sacar)" aria-label="Buscar aula ou dúvida">
     </div>
     <div class="chips" id="chips"></div>
     <div class="results" id="results"></div>
@@ -235,7 +244,7 @@ window.GUIA_CONFIG={
   <div class="sec"><div><div class="kick">Comece por aqui</div><h2>Primeiros Passos</h2></div></div>
   <div class="covers" id="covers"></div>
 
-  <div class="sec"><h2>Curso de Trading</h2><span class="lk" id="lk1"></span></div>
+  <div class="sec"><div><h2>Curso de Trading</h2><div class="sm">Mente do Guardião</div></div><span class="lk" id="lk1"></span></div>
   <div class="rail" id="curso"></div>
 
   <div class="sec"><h2>Extras</h2><span class="lk" id="lk2"></span></div>
@@ -252,7 +261,6 @@ window.GUIA_CONFIG={
 
 <button class="fab" id="fab" aria-label="Falar com o suporte"><span id="icWa"></span> Ajuda</button>
 
-<!-- Aula -->
 <div class="overlay" id="overlay" role="dialog" aria-modal="true">
   <div class="sheet" id="sheet">
     <div class="sheet-top"><span class="lbl" id="stepLbl"></span><button class="x" id="close" aria-label="Fechar"><span id="icX"></span></button></div>
@@ -260,6 +268,7 @@ window.GUIA_CONFIG={
     <p class="tlinfo" id="tlinfo"></p>
     <h3 id="lTitle"></h3>
     <div class="player" id="player"></div>
+    <div class="lact" id="lActions" hidden></div>
     <div class="nb"><span class="ic" id="icCheckBig"></span><div><p class="h">O que fazer agora</p><p class="c" id="nextTxt"></p></div></div>
     <div class="acts">
       <button class="btn btn-done" id="markBtn"></button>
@@ -271,12 +280,11 @@ window.GUIA_CONFIG={
   </div>
 </div>
 
-<!-- Cadeado -->
 <div class="overlay" id="lockOverlay" role="dialog" aria-modal="true">
   <div class="locksheet">
     <div class="ring" id="icLockBig"></div>
     <h3>Aula da área de membros</h3>
-    <p id="lockTxt">Esta aula faz parte da sua área de membros completa. Entre com o e-mail da sua compra para assistir.</p>
+    <p>Esta aula faz parte da sua área de membros completa. Entre com o e-mail da sua compra para assistir.</p>
     <a class="go" id="lockGo" href="#"><span id="icArrow2"></span> Entrar na área de membros</a>
     <button class="cancel" id="lockCancel">Voltar</button>
   </div>
@@ -285,8 +293,6 @@ window.GUIA_CONFIG={
 <script>
 (function(){
   var CFG=window.GUIA_CONFIG;
-
-  /* ---------- Ícones ---------- */
   function I(inner,o){o=o||{};var f=o.fill?'fill="currentColor" stroke="none"':'fill="none" stroke="currentColor" stroke-width="'+(o.sw||2)+'" stroke-linecap="round" stroke-linejoin="round"';return '<svg viewBox="0 0 24 24" '+f+' aria-hidden="true">'+inner+'</svg>';}
   var G={
     shield:'<path d="M12 3l7 3v5.4c0 4.2-2.9 7.4-7 8.6-4.1-1.2-7-4.4-7-8.6V6z"/><polyline points="9 12 11.3 14.3 15.2 10"/>',
@@ -304,11 +310,12 @@ window.GUIA_CONFIG={
     chat:'<path d="M4 5.5h16v10H9l-4 3.5V15.5H4z"/>',
     flag:'<line x1="6" y1="21" x2="6" y2="4"/><path d="M6 4h11l-2 3.5L17 11H6"/>',
     lock:'<rect x="5" y="10" width="14" height="10" rx="2.2"/><path d="M8 10V7.2a4 4 0 0 1 8 0V10"/>',
+    star:'<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.9 6.8 20.6l1-5.8L3.5 9.7l5.9-.9z"/>',
     wa:I('<path d="M12 2a10 10 0 0 0-8.6 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2Zm5.2 14.13c-.22.62-1.27 1.19-1.76 1.23-.47.05-.9.23-3.02-.63-2.55-1.03-4.16-3.66-4.28-3.83-.13-.17-1.02-1.36-1.02-2.6 0-1.23.65-1.84.88-2.09.23-.25.5-.31.67-.31l.48.01c.15 0 .36-.06.56.43.22.53.73 1.83.8 1.96.06.13.1.28.02.45-.08.17-.13.28-.25.43l-.37.43c-.12.12-.25.26-.11.5.14.25.62 1.02 1.33 1.66.91.81 1.68 1.07 1.92 1.19.24.12.38.1.52-.06.14-.17.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.16 1.2Z"/>',{fill:true})
   };
   function ic(n){return (n==='play'||n==='pause'||n==='wa')?G[n]:I(G[n]||'');}
   var $=function(id){return document.getElementById(id);};
-  $('brandMk').innerHTML=I(G.shield,{sw:1.7});$('icHelp').innerHTML=ic('chat');$('icSearch').innerHTML=ic('search');
+  $('brandMk').innerHTML=I(G.shield,{sw:1.7});$('icSearch').innerHTML=ic('search');
   $('icLock').innerHTML=ic('lock');$('icArrow').innerHTML=ic('arrow');$('icArrow2').innerHTML=ic('arrow');
   $('icWa').innerHTML=G.wa;$('icX').innerHTML=ic('x');$('icCheckBig').innerHTML=ic('checkC');
   $('lk1').innerHTML=ic('lock');$('lk2').innerHTML=ic('lock');$('icLockBig').innerHTML=ic('lock');
@@ -316,23 +323,33 @@ window.GUIA_CONFIG={
   /* ---------- Conteúdo ---------- */
   var LESSONS=[
     {key:"boas-vindas",step:1,cat:"passo",title:"Boas-vindas + próximos passos",short:"Boas-vindas",desc:"Comece por aqui. Em poucos minutos você entende como tudo funciona.",vid:"YlzjoIm0HYY",
-      next:"Ótimo começo! Agora vamos abrir a sua conta na corretora. Toque em “Próximo passo”.",kw:["comecar","começar","inicio","início","primeiro","por onde","perdido","boas vindas","apresentacao","introducao","o que e","como funciona","como começar","como comecar"]},
-    {key:"abrir-conta",step:2,cat:"passo",title:"Abrir sua conta na corretora",short:"Abrir conta",desc:"O passo a passo para criar sua conta na Hantec, com calma.",vid:"Q86zFE_kz4E",
-      next:"Conta criada? Agora vamos colocar seu primeiro dinheiro na conta (o depósito).",kw:["abrir conta","criar conta","cadastro","cadastrar","conta","corretora","hantec","registro","registrar","abertura"]},
+      next:"Ótimo começo! Agora vamos abrir a sua conta na corretora. Toque em “Próximo passo”.",
+      act:[{t:"Conhecer o Guardião PRO",u:CFG.proOffer,k:"gold",i:"shield"}],
+      kw:["comecar","começar","inicio","início","primeiro","por onde","perdido","boas vindas","apresentacao","introducao","o que e","como funciona","como começar","como comecar"]},
+    {key:"abrir-conta",step:2,cat:"passo",title:"Abrir sua conta na corretora",short:"Abrir conta",desc:"O passo a passo para criar sua conta, com calma.",vid:"Q86zFE_kz4E",
+      next:"Conta criada? Agora vamos colocar seu primeiro dinheiro na conta (o depósito).",
+      act:[{t:"Abrir minha conta na corretora",u:CFG.brokerConta,k:"primary",i:"userplus",note:"Abra a conta por este botão para ter a assessoria exclusiva da corretora."},{t:"Conhecer o Guardião PRO",u:CFG.proOffer,k:"gold",i:"shield"}],
+      kw:["abrir conta","criar conta","cadastro","cadastrar","conta","corretora","hantec","hmarkets","registro","registrar","abertura"]},
     {key:"deposito",step:3,cat:"passo",title:"Fazer seu primeiro depósito",short:"Depósito",desc:"Como colocar dinheiro na sua conta para o Guardião poder operar.",vid:"6U3zhZcIjJA",
-      next:"Dinheiro na conta? Agora vamos ativar o Guardião para ele trabalhar por você.",kw:["deposito","depósito","depositar","colocar dinheiro","botar dinheiro","adicionar saldo","primeiro deposito","investir","pix","transferir","por dinheiro","enviar dinheiro","recarregar","aporte"]},
+      next:"Dinheiro na conta? Agora vamos ativar o Guardião para ele trabalhar por você.",
+      act:[{t:"Depositar com bônus de 100%",u:CFG.brokerDeposito,k:"primary",i:"wallet"}],
+      kw:["deposito","depósito","depositar","colocar dinheiro","botar dinheiro","adicionar saldo","primeiro deposito","investir","pix","transferir","por dinheiro","enviar dinheiro","recarregar","aporte","bonus","bônus"]},
     {key:"ativar",step:4,cat:"passo",title:"Ativar o Guardião (a Inteligência Artificial)",short:"Ativar o robô",desc:"Conecte o robô à sua conta. A partir daqui ele opera sozinho por você.",vid:"15TKt4nQiNk",
-      next:"Pronto! O Guardião já está operando por você. Agora aprenda como tirar seu dinheiro quando quiser.",kw:["ativar","ligar","robo","robô","ia","inteligencia","conectar","comecar a operar","ativar o robo","guardiao","ligar o robo","colocar pra rodar","operar"]},
+      next:"Pronto! O Guardião já está operando por você. Agora aprenda como tirar seu dinheiro quando quiser.",
+      act:[{t:"Ativar o Guardião agora",u:CFG.brokerAtivar,k:"primary",i:"power"}],
+      kw:["ativar","ligar","robo","robô","ia","inteligencia","conectar","comecar a operar","ativar o robo","guardiao","ligar o robo","colocar pra rodar","operar"]},
     {key:"saque",step:5,cat:"passo",title:"Como sacar seu dinheiro",short:"Saque",desc:"O jeito certo de tirar (sacar) o seu dinheiro sempre que precisar.",vid:"c_s1rkFRlW8",
-      next:"Você já sabe o essencial! Qualquer dúvida, veja o Suporte e a Comunidade no próximo passo.",kw:["saque","sacar","tirar dinheiro","retirar","receber","resgatar","pegar meu dinheiro","retirada","tirar meu dinheiro","como recebo","levantar"]},
+      next:"Você já sabe o essencial! Qualquer dúvida, veja o Suporte e a Comunidade no próximo passo.",
+      kw:["saque","sacar","tirar dinheiro","retirar","receber","resgatar","pegar meu dinheiro","retirada","tirar meu dinheiro","como recebo","levantar"]},
     {key:"suporte",step:6,cat:"passo",title:"Suporte, Comunidade e LIVE OURO",short:"Suporte",desc:"Onde pedir ajuda, falar com pessoas e acompanhar as lives.",vid:"puVIT6AHvdM",
-      next:"Tudo certo! Você concluiu os primeiros passos. Fale com a gente sempre que precisar.",kw:["suporte","ajuda","atendimento","falar com alguem","problema","comunidade","grupo","live","ouro","live ouro","contato","reclamar","nao consigo","não consigo"]},
+      next:"Tudo certo! Você concluiu os primeiros passos. Fale com a gente sempre que precisar.",
+      kw:["suporte","ajuda","atendimento","falar com alguem","problema","comunidade","grupo","live","ouro","live ouro","contato","reclamar","nao consigo","não consigo"]},
 
     {key:"indicacao",cat:"extra",title:"Indicação / IB — ganhar indicando",vid:"osGq82UY804",kw:["indicacao","indicar","ib","afiliado","ganhar indicando","convidar","amigos","comissao"]},
     {key:"guardiao-pro",cat:"extra",title:"Ative seu GUARDIÃO PRO",vid:"LrCvZdp2JGs",kw:["pro","guardiao pro","versao pro","mais lucro","turbinar","upgrade","acelerador"]},
     {key:"reprise-live",cat:"extra",title:"Reprise da Live",vid:"",kw:["reprise","live","ao vivo","transmissao","gravacao","assistir de novo","replay"]},
 
-    {key:"mercado",cat:"curso",title:"Introdução ao Mercado Financeiro",vid:"GtJZlUIs6iw",kw:["mercado","mercado financeiro","introducao","basico","aprender","curso"]},
+    {key:"mercado",cat:"curso",title:"Introdução ao Mercado Financeiro",vid:"GtJZlUIs6iw",kw:["mercado","mercado financeiro","introducao","basico","aprender","curso","mente do guardiao"]},
     {key:"cenario-1",cat:"curso",title:"Análise de Cenário 1",vid:"Mc-h6av8eNU",kw:["cenario","analise de cenario","cenario 1"]},
     {key:"cenario-2",cat:"curso",title:"Análise de Cenário 2",vid:"Xgst9D0v0RA",kw:["cenario 2","analise 2"]},
     {key:"cenario-3",cat:"curso",title:"Análise de Cenário 3",vid:"xL3PCTS_dZE",kw:["cenario 3","analise 3"]},
@@ -347,8 +364,8 @@ window.GUIA_CONFIG={
   var BY={};LESSONS.forEach(function(l){BY[l.key]=l;});
   var STEPS=LESSONS.filter(function(l){return l.cat==="passo";}).sort(function(a,b){return a.step-b.step;});
   function locked(l){return l.cat!=="passo";}
+  function offerFor(l){if(l.cat==="curso")return CFG.menteOffer;if(l.key==="guardiao-pro")return CFG.proOffer;return null;}
 
-  /* ---------- Progresso ---------- */
   var PKEY="guia_progress_v2";
   function loadP(){try{return JSON.parse(localStorage.getItem(PKEY))||{done:[],last:null};}catch(e){return{done:[],last:null};}}
   function saveP(p){try{localStorage.setItem(PKEY,JSON.stringify(p));}catch(e){}}
@@ -359,7 +376,7 @@ window.GUIA_CONFIG={
   function supportHref(msg){var t=encodeURIComponent(msg||"Olá! Preciso de ajuda com o Guardião.");return CFG.supportWhatsapp?("https://wa.me/"+CFG.supportWhatsapp+"?text="+t):("mailto:"+CFG.supportEmail+"?subject="+encodeURIComponent("Ajuda - Guardião")+"&body="+t);}
   function norm(s){return (s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");}
 
-  /* ---------- HERO ---------- */
+  /* HERO */
   function renderHero(){
     var done=STEPS.filter(function(l){return isDone(l.key);}).length,total=STEPS.length;
     var next=null;for(var i=0;i<STEPS.length;i++){if(!isDone(STEPS[i].key)){next=STEPS[i];break;}}
@@ -371,31 +388,25 @@ window.GUIA_CONFIG={
     var hp=$('heroPlay');hp.innerHTML=ic('play')+" "+(allDone?"Rever do início":(done>0?"Continuar":"Assistir agora"));hp.onclick=function(){openLesson(target.key);};
     $('heroBar').style.width=(done/total*100)+"%";$('heroPtxt').textContent=done+" de "+total;
   }
-
-  /* ---------- Cover cards (passos) ---------- */
   function renderCovers(){
     var el=$('covers');el.innerHTML="";
     STEPS.forEach(function(l){
       var d=isDone(l.key),t=thumb(l),c=document.createElement("button");c.className="cover"+(d?" done":"");c.setAttribute("aria-label",l.title);
-      c.innerHTML='<div class="img" style="'+(t?("background-image:url(\'"+t+"\')"):"")+'"><div class="g"></div>'+
-        '<span class="num">'+l.step+'</span>'+(d?('<span class="pill">'+ic('check')+'Concluído</span>'):'')+
-        '<span class="pbtn">'+ic('play')+'</span></div>'+
-        '<div class="meta"><div class="t">'+l.title+'</div><div class="s">Passo '+l.step+' de '+STEPS.length+' · toque para assistir</div></div>';
+      c.innerHTML='<div class="img" style="'+(t?("background-image:url(\'"+t+"\')"):"")+'"><div class="g"></div><span class="num">'+l.step+'</span>'+(d?('<span class="pill">'+ic('check')+'Concluído</span>'):'')+'<span class="pbtn">'+ic('play')+'</span></div><div class="meta"><div class="t">'+l.title+'</div><div class="s">Passo '+l.step+' de '+STEPS.length+' · toque para assistir</div></div>';
       c.addEventListener("click",function(){openLesson(l.key);});el.appendChild(c);
     });
   }
-
-  /* ---------- Rails (locked) ---------- */
   function renderRail(id,items){
     var el=$(id);el.innerHTML="";
     items.forEach(function(l){
-      var t=thumb(l),b=document.createElement("button");b.className="tile lock";b.setAttribute("aria-label",l.title+" (bloqueada)");
+      var t=thumb(l),b=document.createElement("button");b.className="tile lock";b.setAttribute("aria-label",l.title);
       b.innerHTML='<div class="img '+(t?"":"fallback")+'" style="'+(t?("background-image:url(\'"+t+"\')"):"")+'"><div class="g"></div>'+(t?"":ic('play'))+'<span class="lk">'+ic('lock')+'</span></div><div class="t">'+l.title+'</div>';
-      b.addEventListener("click",function(){openLock();});el.appendChild(b);
+      b.addEventListener("click",function(){openLockedItem(l);});el.appendChild(b);
     });
   }
+  function openLockedItem(l){var t=offerFor(l);if(t){window.open(t,"_blank","noopener");}else{openLock();}}
 
-  /* ---------- Busca ---------- */
+  /* Busca */
   function searchLessons(q){q=norm(q).trim();if(!q)return[];var terms=q.split(/\s+/).filter(Boolean);
     return LESSONS.map(function(l){var hay=norm(l.title+" "+(l.desc||"")+" "+l.kw.join(" "));var s=0;
       l.kw.forEach(function(k){var nk=norm(k);if(q.indexOf(nk)>=0||nk.indexOf(q)>=0)s+=6;});
@@ -403,98 +414,83 @@ window.GUIA_CONFIG={
       if(norm(l.title).indexOf(q)>=0)s+=4;return{l:l,s:s};}).filter(function(x){return x.s>0;}).sort(function(a,b){return b.s-a.s;}).slice(0,3).map(function(x){return x.l;});}
   function resultRow(l){var t=thumb(l),lk=locked(l);var stepTxt=l.step?("Passo "+l.step):(lk?"Área de membros":"");
     var b=document.createElement("button");b.className="tile";b.style.flex="1 0 auto";b.style.maxWidth="none";
-    b.innerHTML='<div style="display:flex;gap:13px;align-items:center;padding:10px">'+
-      '<div class="img '+(t?"":"fallback")+'" style="width:120px;flex:0 0 auto;border-radius:12px;'+(lk?"filter:grayscale(.4) brightness(.62);":"")+(t?("background-image:url(\'"+t+"\')"):"")+'">'+(t?"":ic('play'))+(lk?('<span class="lk" style="width:30px;height:30px">'+ic('lock')+'</span>'):"")+'</div>'+
-      '<div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:800;line-height:1.25">'+l.title+'</div>'+
-      '<div style="font-size:13px;color:var(--muted-2);margin-top:3px">'+stepTxt+(lk?" · com cadeado":" · toque para assistir")+'</div></div></div>';
-    b.addEventListener("click",function(){lk?openLock():openLesson(l.key);});return b;}
+    b.innerHTML='<div style="display:flex;gap:13px;align-items:center;padding:10px"><div class="img '+(t?"":"fallback")+'" style="width:120px;flex:0 0 auto;border-radius:12px;'+(lk?"filter:grayscale(.4) brightness(.62);":"")+(t?("background-image:url(\'"+t+"\')"):"")+'">'+(t?"":ic('play'))+(lk?('<span class="lk" style="width:30px;height:30px">'+ic('lock')+'</span>'):"")+'</div><div style="flex:1;min-width:0"><div style="font-size:16px;font-weight:800;line-height:1.25">'+l.title+'</div><div style="font-size:13px;color:var(--muted-2);margin-top:3px">'+stepTxt+(lk?" · com cadeado":" · toque para assistir")+'</div></div></div>';
+    b.addEventListener("click",function(){lk?openLockedItem(l):openLesson(l.key);});return b;}
   function renderResults(q){var box=$('results');if(!q.trim()){box.classList.remove("show");box.innerHTML="";return;}
     var found=searchLessons(q);box.classList.add("show");box.innerHTML="";
     if(!found.length){var e=document.createElement("div");e.className="res-empty";e.innerHTML='Não encontrei uma aula exata para isso. Toque no botão verde <b>“Ajuda”</b> que a gente te responde rapidinho.';box.appendChild(e);return;}
     found.forEach(function(l){box.appendChild(resultRow(l));});}
 
-  /* ---------- Chips ---------- */
   var CHIPS=[['flag','como começar',true],['wallet','depósito'],['bank','sacar'],['power','ativar o robô'],['userplus','abrir conta'],['chat','suporte']];
   (function(){var el=$('chips');CHIPS.forEach(function(c){var b=document.createElement("button");b.className="chip"+(c[2]?" hot":"");b.innerHTML=ic(c[0])+"<span>"+c[1]+"</span>";
     b.addEventListener("click",function(){$('q').value=c[1];renderResults(c[1]);$('results').scrollIntoView({behavior:"smooth",block:"nearest"});});el.appendChild(b);});})();
 
-  /* ======== PLAYER PRÓPRIO (esconde YouTube) ======== */
+  /* ======== PLAYER (esconde YouTube) ======== */
   var YTready=false,YTcbs=[];
   window.onYouTubeIframeAPIReady=function(){YTready=true;YTcbs.forEach(function(c){c();});YTcbs=[];};
   function loadYT(cb){if(YTready&&window.YT&&YT.Player){cb();return;}YTcbs.push(cb);if(!document.getElementById('ytapi')){var s=document.createElement('script');s.id='ytapi';s.src='https://www.youtube.com/iframe_api';document.head.appendChild(s);}}
-  var player=null,poll=null;
+  var player=null,poll=null,hideT=null,started=false;
   function fmt(t){t=Math.max(0,Math.floor(t||0));var m=Math.floor(t/60),s=t%60;return m+":"+(s<10?"0":"")+s;}
-  function destroyPlayer(){if(poll){clearInterval(poll);poll=null;}if(player&&player.destroy){try{player.destroy();}catch(e){}}player=null;}
-  function mountPlayer(vid){
+  function destroyPlayer(){if(poll){clearInterval(poll);poll=null;}if(hideT){clearTimeout(hideT);hideT=null;}if(player&&player.destroy){try{player.destroy();}catch(e){}}player=null;started=false;}
+  function mountPlayer(vid,t){
     destroyPlayer();
     var box=$('player');
     box.innerHTML='<div id="ytmount"></div><div class="tap" id="pTap"></div>'+
-      '<button class="big" id="pBig" aria-label="Reproduzir">'+ic('play')+'</button>'+
+      '<button class="big" id="pBig" hidden aria-label="Reproduzir">'+ic('play')+'</button>'+
       '<div class="ctrls" id="pCtrls" hidden><button class="mini" id="pMini" aria-label="Pausar">'+ic('pause')+'</button>'+
-      '<div class="bar" id="pBar"><div class="track"><div class="fill" id="pFill"></div><div class="knob" id="pKnob"></div></div></div>'+
-      '<div class="time" id="pTime">0:00 / 0:00</div></div>'+
-      '<div class="load" id="pLoad"><div class="sp"></div></div>'+
+      '<div class="bar" id="pBar"><div class="track"><div class="fill" id="pFill"></div><div class="knob" id="pKnob"></div></div></div><div class="time" id="pTime">0:00 / 0:00</div></div>'+
+      '<div class="poster" id="pPoster" style="'+(t?("background-image:url(\'"+t+"\')"):"")+'"><div class="pg"></div><button class="pplay" id="pPlay">'+ic('play')+' <span>Assistir aula</span></button></div>'+
+      '<div class="load" id="pLoad" hidden><div class="sp"></div></div>'+
       '<div class="err" id="pErr" hidden><p>Não foi possível carregar este vídeo agora.</p><button id="pRetry">Tentar de novo</button></div>';
     loadYT(function(){
       player=new YT.Player('ytmount',{videoId:vid,host:'https://www.youtube-nocookie.com',
         playerVars:{controls:0,modestbranding:1,rel:0,playsinline:1,disablekb:1,fs:0,iv_load_policy:3,autoplay:0,origin:location.origin},
-        events:{onReady:onReady,onStateChange:onState,onError:onError}});
+        events:{onReady:function(){},onStateChange:onState,onError:onError}});
     });
-    wirePlayer(vid);
+    wire(vid);
   }
-  function onReady(){$('pLoad').hidden=true;}
-  function onState(e){
-    var big=$('pBig'),ctr=$('pCtrls'),mini=$('pMini');
-    if(e.data===YT.PlayerState.PLAYING){big.hidden=true;ctr.hidden=false;mini.innerHTML=ic('pause');startPoll();}
-    else if(e.data===YT.PlayerState.PAUSED){big.hidden=false;mini.innerHTML=ic('play');}
-    else if(e.data===YT.PlayerState.ENDED){big.hidden=false;big.innerHTML=ic('play');if(poll){clearInterval(poll);poll=null;}}
-    else if(e.data===YT.PlayerState.BUFFERING){/*keep*/}
+  function firstPlay(){var ps=$('pPoster');if(ps)ps.hidden=true;$('pLoad').hidden=false;started=true;if(player&&player.playVideo)player.playVideo();}
+  function showCtrls(auto){var c=$('pCtrls');if(!c)return;c.hidden=false;c.classList.remove('hide');if(hideT)clearTimeout(hideT);if(auto)hideT=setTimeout(function(){if(player&&player.getPlayerState&&player.getPlayerState()===1)c.classList.add('hide');},3000);}
+  function onState(e){var big=$('pBig'),mini=$('pMini');if(!big)return;
+    if(e.data===1){$('pLoad').hidden=true;big.hidden=true;if(mini)mini.innerHTML=ic('pause');showCtrls(true);startPoll();}
+    else if(e.data===2){big.hidden=false;big.innerHTML=ic('play');if(mini)mini.innerHTML=ic('play');showCtrls(false);}
+    else if(e.data===0){big.hidden=false;big.innerHTML=ic('play');if(poll){clearInterval(poll);poll=null;}showCtrls(false);}
+    else if(e.data===3){$('pLoad').hidden=true;}
   }
-  function onError(){$('pLoad').hidden=true;$('pErr').hidden=false;}
-  function startPoll(){if(poll)clearInterval(poll);poll=setInterval(function(){
-    if(!player||!player.getDuration)return;var d=player.getDuration()||0,c=player.getCurrentTime()||0;
-    var pct=d?(c/d*100):0;$('pFill').style.width=pct+"%";$('pKnob').style.left=pct+"%";$('pTime').textContent=fmt(c)+" / "+fmt(d);
-  },250);}
-  function toggle(){if(!player||!player.getPlayerState)return;var st=player.getPlayerState();(st===YT.PlayerState.PLAYING)?player.pauseVideo():player.playVideo();}
-  function wirePlayer(vid){
+  function onError(){$('pLoad').hidden=true;var ps=$('pPoster');if(ps)ps.hidden=true;$('pErr').hidden=false;}
+  function startPoll(){if(poll)clearInterval(poll);poll=setInterval(function(){if(!player||!player.getDuration)return;var d=player.getDuration()||0,c=player.getCurrentTime()||0,p=d?(c/d*100):0;$('pFill').style.width=p+"%";$('pKnob').style.left=p+"%";$('pTime').textContent=fmt(c)+" / "+fmt(d);},250);}
+  function toggle(){if(!player||!player.getPlayerState)return;var s=player.getPlayerState();(s===1)?player.pauseVideo():player.playVideo();}
+  function wire(vid){
+    $('pPlay').addEventListener("click",function(e){e.stopPropagation();firstPlay();});
     $('pBig').addEventListener("click",function(e){e.stopPropagation();toggle();});
-    $('pTap').addEventListener("click",toggle);
+    $('pTap').addEventListener("click",function(){if(!started)return;var c=$('pCtrls');if(player&&player.getPlayerState&&player.getPlayerState()===1&&c.classList.contains('hide')){showCtrls(true);}else{toggle();}});
     $('pMini').addEventListener("click",function(e){e.stopPropagation();toggle();});
-    $('pRetry').addEventListener("click",function(){$('pErr').hidden=true;$('pLoad').hidden=false;mountPlayer(vid);});
-    var bar=$('pBar'),dragging=false;
-    function seekAt(clientX){var r=bar.getBoundingClientRect();var p=Math.min(1,Math.max(0,(clientX-r.left)/r.width));if(player&&player.getDuration){player.seekTo(p*(player.getDuration()||0),true);$('pFill').style.width=(p*100)+"%";$('pKnob').style.left=(p*100)+"%";}}
-    bar.addEventListener("pointerdown",function(e){dragging=true;bar.setPointerCapture(e.pointerId);seekAt(e.clientX);});
-    bar.addEventListener("pointermove",function(e){if(dragging)seekAt(e.clientX);});
-    bar.addEventListener("pointerup",function(){dragging=false;});
+    $('pRetry').addEventListener("click",function(){$('pErr').hidden=true;mountPlayer(vid,thumbById(vid));});
+    var bar=$('pBar'),drag=false;
+    function seek(x){var r=bar.getBoundingClientRect();var p=Math.min(1,Math.max(0,(x-r.left)/r.width));if(player&&player.getDuration){player.seekTo(p*(player.getDuration()||0),true);$('pFill').style.width=(p*100)+"%";$('pKnob').style.left=(p*100)+"%";}showCtrls(true);}
+    bar.addEventListener("pointerdown",function(e){drag=true;try{bar.setPointerCapture(e.pointerId);}catch(_){}seek(e.clientX);});
+    bar.addEventListener("pointermove",function(e){if(drag)seek(e.clientX);});
+    bar.addEventListener("pointerup",function(){drag=false;});
   }
+  function thumbById(vid){return vid?("https://i.ytimg.com/vi/"+vid+"/hqdefault.jpg"):null;}
 
-  /* ======== Overlay de aula ======== */
+  /* ======== Popup ======== */
   var overlay=$('overlay'),current=null;
-  function renderTimeline(l){
-    var tl=$('tl');tl.innerHTML="";
-    STEPS.forEach(function(s,i){
-      if(i>0){var seg=document.createElement("div");seg.className="seg"+((isDone(STEPS[i-1].key))?" done":"");tl.appendChild(seg);}
-      var n=document.createElement("button");var cur=s.key===l.key,dn=isDone(s.key);
-      n.className="node"+(dn?" done":"")+(cur?" cur":"");n.innerHTML=dn?ic('check'):String(s.step);n.title=s.title;
-      n.addEventListener("click",function(){openLesson(s.key);});tl.appendChild(n);
-    });
-    var restantes=STEPS.filter(function(s){return !isDone(s.key);}).length;
-    $('tlinfo').innerHTML='<b>Passo '+l.step+' de '+STEPS.length+'</b>'+(restantes>0?(' · faltam '+restantes+(restantes>1?' aulas':' aula')):' · tudo concluído');
-  }
-  function renderUpNext(l){
-    var box=$('up'),h=$('upH');box.innerHTML="";
-    var rest=STEPS.filter(function(s){return s.step>l.step;}).slice(0,3);
-    if(!rest.length){h.hidden=true;return;}h.hidden=false;
-    rest.forEach(function(s){var d=isDone(s.key);var r=document.createElement("button");r.className="uprow";
-      r.innerHTML='<span class="n'+(d?" done":"")+'">'+(d?ic('check'):s.step)+'</span><span class="tt">'+s.title+'</span><span class="cv">'+ic('play')+'</span>';
-      r.addEventListener("click",function(){openLesson(s.key);$('sheet').scrollTop=0;});box.appendChild(r);});
-  }
+  function renderTimeline(l){var tl=$('tl');tl.innerHTML="";
+    STEPS.forEach(function(s,i){if(i>0){var seg=document.createElement("div");seg.className="seg"+((isDone(STEPS[i-1].key))?" done":"");tl.appendChild(seg);}
+      var n=document.createElement("button");var cur=s.key===l.key,dn=isDone(s.key);n.className="node"+(dn?" done":"")+(cur?" cur":"");n.innerHTML=dn?ic('check'):String(s.step);n.title=s.title;n.addEventListener("click",function(){openLesson(s.key);});tl.appendChild(n);});
+    var rest=STEPS.filter(function(s){return !isDone(s.key);}).length;
+    $('tlinfo').innerHTML='<b>Passo '+l.step+' de '+STEPS.length+'</b>'+(rest>0?(' · faltam '+rest+(rest>1?' aulas':' aula')):' · tudo concluído');}
+  function renderActions(l){var box=$('lActions');box.innerHTML="";if(!l.act||!l.act.length){box.hidden=true;return;}box.hidden=false;
+    l.act.forEach(function(a){var el=document.createElement("a");el.className="abtn "+(a.k||"primary");el.href=a.u;el.target="_blank";el.rel="noopener";el.innerHTML=ic(a.i||"arrow")+" <span>"+a.t+"</span>";box.appendChild(el);if(a.note){var n=document.createElement("p");n.className="anote";n.textContent=a.note;box.appendChild(n);}});}
+  function renderUpNext(l){var box=$('up'),h=$('upH');box.innerHTML="";var rest=STEPS.filter(function(s){return s.step>l.step;}).slice(0,3);if(!rest.length){h.hidden=true;return;}h.hidden=false;
+    rest.forEach(function(s){var d=isDone(s.key);var r=document.createElement("button");r.className="uprow";r.innerHTML='<span class="n'+(d?" done":"")+'">'+(d?ic('check'):s.step)+'</span><span class="tt">'+s.title+'</span><span class="cv">'+ic('play')+'</span>';r.addEventListener("click",function(){openLesson(s.key);$('sheet').scrollTop=0;});box.appendChild(r);});}
   function nextStepOf(l){return STEPS.find(function(s){return s.step===l.step+1;})||null;}
   function openLesson(key){
-    var l=BY[key];if(!l||locked(l)){openLock();return;}
+    var l=BY[key];if(!l||locked(l)){openLockedItem(l||{});return;}
     current=l;P.last=key;saveP(P);
     $('stepLbl').textContent="Passo "+l.step+" de "+STEPS.length;
-    renderTimeline(l);renderUpNext(l);
+    renderTimeline(l);renderActions(l);renderUpNext(l);
     $('lTitle').textContent=l.title;
     $('nextTxt').textContent=l.next||"Quando terminar, escolha o próximo passo.";
     var mb=$('markBtn');mb.classList.toggle("on",isDone(l.key));mb.innerHTML=ic('check')+" "+(isDone(l.key)?"Passo concluído":"Concluí este passo");
@@ -502,33 +498,31 @@ window.GUIA_CONFIG={
     if(nx){nb.style.display="";nb.innerHTML="Próximo passo: "+nx.short+" "+ic('arrow');nb.onclick=function(){openLesson(nx.key);$('sheet').scrollTop=0;};}else nb.style.display="none";
     $('helpBtn').innerHTML=ic('chat')+" Preciso de ajuda";
     overlay.classList.add("show");document.body.style.overflow="hidden";$('sheet').scrollTop=0;
-    mountPlayer(l.vid);
-    if(history.replaceState)history.replaceState(null,"","#aula="+key);
+    mountPlayer(l.vid,thumb(l));
+    if(history.replaceState)history.replaceState(null,"","?aula="+key);
   }
   function closeLesson(){destroyPlayer();overlay.classList.remove("show");document.body.style.overflow="";$('player').innerHTML="";current=null;
-    if(history.replaceState)history.replaceState(null,"",location.pathname+location.search);renderAll();}
+    if(history.replaceState)history.replaceState(null,"",location.pathname);renderAll();}
   $('close').addEventListener("click",closeLesson);
   overlay.addEventListener("click",function(e){if(e.target===overlay)closeLesson();});
   $('markBtn').addEventListener("click",function(){if(!current)return;markDone(current.key);var mb=$('markBtn');mb.classList.add("on");mb.innerHTML=ic('check')+" Passo concluído";renderHero();renderTimeline(current);renderUpNext(current);var nx=nextStepOf(current);if(nx)setTimeout(function(){openLesson(nx.key);},350);});
   $('helpBtn').addEventListener("click",function(){window.open(supportHref(current?("Olá! Estou na aula \""+current.title+"\" e preciso de ajuda."):null),"_blank");});
 
-  /* ======== Cadeado ======== */
+  /* Cadeado */
   var lockOv=$('lockOverlay');
   function openLock(){$('lockGo').setAttribute("href",CFG.fullMembersUrl);lockOv.classList.add("show");document.body.style.overflow="hidden";}
   function closeLock(){lockOv.classList.remove("show");document.body.style.overflow="";}
   $('lockCancel').addEventListener("click",closeLock);
   lockOv.addEventListener("click",function(e){if(e.target===lockOv)closeLock();});
   $('fullBtn').addEventListener("click",function(){window.location.href=CFG.fullMembersUrl;});
-
-  /* ======== Rodapé/FAB/busca ======== */
   $('fab').addEventListener("click",function(){window.open(supportHref(),"_blank");});
   $('q').addEventListener("input",function(){renderResults(this.value);});
 
-  function deepKey(){var h=(location.hash||"").replace(/^#/,"");var m=/(?:^|&)aula=([^&]+)/.exec(h)||/(?:^|&)aula=([^&]+)/.exec(location.search.replace(/^\?/,""));return m?decodeURIComponent(m[1]):null;}
+  function deepKey(){var q=/(?:^|[?&])aula=([^&]+)/.exec(location.search);if(q)return decodeURIComponent(q[1]);var h=/(?:^|[#&])aula=([^&]+)/.exec(location.hash);return h?decodeURIComponent(h[1]):null;}
   function renderAll(){renderHero();renderCovers();renderRail("curso",LESSONS.filter(function(l){return l.cat==="curso";}));renderRail("extras",LESSONS.filter(function(l){return l.cat==="extra";}));}
   renderAll();
-  var dk=deepKey();if(dk&&BY[dk]){locked(BY[dk])?openLock():openLesson(dk);}
-  window.addEventListener("hashchange",function(){var k=deepKey();if(k&&BY[k]){locked(BY[k])?openLock():openLesson(k);}});
+  var dk=deepKey();if(dk&&BY[dk]){locked(BY[dk])?openLockedItem(BY[dk]):openLesson(dk);}
+  window.addEventListener("hashchange",function(){var k=deepKey();if(k&&BY[k]){locked(BY[k])?openLockedItem(BY[k]):openLesson(k);}});
 })();
 </script>
 </body>
