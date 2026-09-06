@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0A0E0C" />
+<title>Guardião · Guia Rápido</title>
+<meta name="description" content="Seu guia passo a passo do Guardião. Simples, no seu ritmo." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   GUARDIÃO — Guia Rápido (área de membros para o público 50+)
+   Ajuste rápido dos contatos aqui embaixo:  window.GUIA_CONFIG
+   ============================================================ */
+:root{
+  --bg:#0A0E0C; --surface:#131A16; --surface-2:#1C2620; --surface-3:#243029;
+  --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.16);
+  --green:#1FCB74; --green-deep:#0E9E52; --green-soft:rgba(31,203,116,.14);
+  --gold:#F5C542; --gold-soft:rgba(245,197,66,.14);
+  --text:#F3F8F4; --muted:#A6B2AB; --muted-2:#7E8C85;
+  --danger:#FF6B5E;
+  --radius:20px; --radius-sm:14px;
+  --tap:62px;
+  --wrap:560px;
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  font-size:18px; line-height:1.5; -webkit-text-size-adjust:100%;}
+body{overflow-x:hidden}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:8px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 18px 140px}
+
+/* Header */
+.top{position:sticky;top:0;z-index:40;background:rgba(10,14,12,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.top .wrap{padding-top:16px;padding-bottom:14px;display:flex;align-items:center;gap:12px}
+.brand{font-size:19px;font-weight:800;letter-spacing:.16em}
+.brand b{color:var(--green);font-weight:900}
+.brand .sub{display:block;font-size:11px;letter-spacing:.22em;color:var(--muted-2);font-weight:700;margin-top:2px}
+
+.hero{padding:26px 0 6px}
+.hi{font-size:26px;font-weight:800;line-height:1.25;margin:0 0 8px}
+.hi .wave{font-size:30px}
+.hi-sub{font-size:17px;color:var(--muted);margin:0}
+
+/* Continue banner */
+.continue{margin:18px 0 2px;background:linear-gradient(135deg,var(--green-soft),transparent);
+  border:1px solid var(--line-2);border-radius:var(--radius);padding:16px 16px;display:none}
+.continue.show{display:block}
+.continue .lbl{font-size:13px;color:var(--muted);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.continue .ttl{font-size:19px;font-weight:800;margin:4px 0 12px}
+.continue button{width:100%;min-height:56px;border:none;border-radius:14px;background:var(--green);
+  color:#04120A;font-size:18px;font-weight:800}
+
+/* Search */
+.search{margin:22px 0 8px}
+.search-lbl{font-size:20px;font-weight:800;margin:0 0 4px}
+.search-hint{font-size:15px;color:var(--muted);margin:0 0 12px}
+.search-box{position:relative}
+.search-box input{width:100%;min-height:var(--tap);padding:0 18px 0 54px;font-size:18px;
+  color:var(--text);background:var(--surface);border:2px solid var(--line-2);border-radius:16px}
+.search-box input::placeholder{color:var(--muted-2)}
+.search-box .mag{position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:22px;opacity:.8}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
+.chip{background:var(--surface-2);border:1px solid var(--line);color:var(--text);
+  border-radius:999px;padding:11px 16px;font-size:15px;font-weight:600}
+.chip:active{background:var(--surface-3)}
+.results{margin-top:14px;display:none;flex-direction:column;gap:10px}
+.results.show{display:flex}
+.res-empty{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:16px;font-size:16px;color:var(--muted)}
+
+/* Section heading */
+.sec{margin:34px 0 14px}
+.sec .kick{font-size:13px;font-weight:800;letter-spacing:.18em;color:var(--green);text-transform:uppercase}
+.sec h2{font-size:23px;font-weight:800;margin:6px 0 0}
+.sec p{font-size:15px;color:var(--muted);margin:6px 0 0}
+
+/* Progress */
+.prog{display:flex;align-items:center;gap:12px;margin:14px 0 18px}
+.prog .bar{flex:1;height:12px;background:var(--surface-2);border-radius:999px;overflow:hidden}
+.prog .fill{height:100%;width:0;background:linear-gradient(90deg,var(--green-deep),var(--green));
+  border-radius:999px;transition:width .5s ease}
+.prog .txt{font-size:15px;font-weight:700;color:var(--muted);white-space:nowrap}
+
+/* Step cards */
+.steps{display:flex;flex-direction:column;gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;display:flex;gap:16px;align-items:flex-start;position:relative;overflow:hidden}
+.card.done{border-color:rgba(31,203,116,.4)}
+.card .num{flex:0 0 auto;width:52px;height:52px;border-radius:16px;background:var(--surface-3);
+  border:1px solid var(--line-2);display:grid;place-items:center;font-size:24px;font-weight:900;color:var(--gold)}
+.card.done .num{background:var(--green);color:#04120A;border-color:transparent}
+.card .body{flex:1;min-width:0}
+.card .title{font-size:20px;font-weight:800;line-height:1.25;margin:0}
+.card .desc{font-size:16px;color:var(--muted);margin:6px 0 14px}
+.card .go{width:100%;min-height:56px;border:none;border-radius:14px;background:var(--green);
+  color:#04120A;font-size:18px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:9px}
+.card.done .go{background:var(--surface-3);color:var(--text);border:1px solid var(--line-2)}
+.card .status{font-size:14px;font-weight:800;color:var(--green);margin:0 0 10px;display:none;align-items:center;gap:6px}
+.card.done .status{display:flex}
+
+/* Simple list cards (curso/extras) */
+.list{display:flex;flex-direction:column;gap:10px}
+.row{width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-sm);padding:16px;display:flex;align-items:center;gap:14px;color:var(--text)}
+.row:active{background:var(--surface-2)}
+.row .ic{flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:var(--surface-3);
+  display:grid;place-items:center;font-size:20px}
+.row .rt{flex:1;min-width:0}
+.row .rt .t{font-size:17px;font-weight:700;line-height:1.3}
+.row .rt .s{font-size:14px;color:var(--muted-2)}
+.row .chev{color:var(--muted-2);font-size:22px;flex:0 0 auto}
+.row.check .ic{background:var(--green);color:#04120A}
+
+details.group{background:transparent;margin-top:2px}
+details.group>summary{list-style:none;cursor:pointer;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-sm);padding:16px 18px;font-size:18px;font-weight:800;display:flex;
+  align-items:center;justify-content:space-between;gap:10px}
+details.group>summary::-webkit-details-marker{display:none}
+details.group>summary .arw{transition:transform .25s;color:var(--muted);font-size:20px}
+details.group[open]>summary .arw{transform:rotate(180deg)}
+details.group .inner{padding:14px 2px 4px}
+.subhead{font-size:15px;font-weight:800;color:var(--muted);letter-spacing:.06em;
+  text-transform:uppercase;margin:16px 0 10px}
+
+/* Full members area CTA */
+.full{margin-top:28px;background:linear-gradient(135deg,var(--gold-soft),transparent);
+  border:1px solid var(--line-2);border-radius:var(--radius);padding:20px}
+.full .t{font-size:19px;font-weight:800;margin:0 0 4px}
+.full .s{font-size:15px;color:var(--muted);margin:0 0 16px}
+.full a{display:flex;align-items:center;justify-content:center;gap:10px;min-height:58px;
+  text-decoration:none;background:var(--gold);color:#1A1400;font-size:18px;font-weight:800;border-radius:14px}
+
+.foot{margin-top:34px;text-align:center;color:var(--muted-2);font-size:14px;line-height:1.7}
+
+/* Floating help */
+.fab{position:fixed;right:16px;bottom:18px;z-index:60;display:flex;align-items:center;gap:10px;
+  background:#25D366;color:#04120A;border:none;border-radius:999px;padding:14px 20px 14px 16px;
+  font-size:17px;font-weight:800;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.fab svg{width:26px;height:26px;flex:0 0 auto}
+
+/* Lesson overlay */
+.overlay{position:fixed;inset:0;z-index:80;background:rgba(4,7,5,.6);backdrop-filter:blur(4px);
+  display:none;align-items:flex-end;justify-content:center}
+.overlay.show{display:flex}
+.sheet{width:100%;max-width:var(--wrap);max-height:94vh;overflow-y:auto;background:var(--bg);
+  border-top-left-radius:24px;border-top-right-radius:24px;border-top:1px solid var(--line-2);
+  padding:0 18px calc(28px + env(safe-area-inset-bottom));animation:up .3s ease}
+@keyframes up{from{transform:translateY(30px);opacity:.6}to{transform:translateY(0);opacity:1}}
+.sheet-top{position:sticky;top:0;background:var(--bg);padding:16px 0 12px;display:flex;
+  align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line)}
+.sheet-top .step-lbl{font-size:13px;font-weight:800;letter-spacing:.12em;color:var(--green);text-transform:uppercase}
+.sheet-top .close{width:46px;height:46px;border-radius:12px;background:var(--surface-2);
+  border:1px solid var(--line);color:var(--text);font-size:22px;flex:0 0 auto}
+.sheet h3{font-size:22px;font-weight:800;line-height:1.25;margin:16px 0 14px}
+.video{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video .novid{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--muted)}
+.next-box{margin:18px 0 6px;background:var(--green-soft);border:1px solid rgba(31,203,116,.35);
+  border-radius:16px;padding:16px}
+.next-box .h{font-size:14px;font-weight:800;color:var(--green);letter-spacing:.06em;text-transform:uppercase;margin:0 0 6px}
+.next-box .c{font-size:17px;margin:0}
+.sheet-actions{display:flex;flex-direction:column;gap:11px;margin-top:18px}
+.btn{width:100%;min-height:58px;border:none;border-radius:14px;font-size:18px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;gap:9px}
+.btn-done{background:var(--green);color:#04120A}
+.btn-done.is-done{background:var(--surface-3);color:var(--text);border:1px solid var(--line-2)}
+.btn-next{background:var(--gold);color:#1A1400}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+</style>
+</head>
+<body>
+<script>
+/* ====== CONFIG: edite os contatos aqui ====== */
+window.GUIA_CONFIG = {
+  // Coloque o número do WhatsApp do suporte (só dígitos, com DDI 55). Ex: "5511999998888"
+  supportWhatsapp: "",
+  supportEmail: "suporte@guardiao.blackboxmembers.com.br",
+  fullMembersUrl: "https://guardiao.blackboxmembers.com.br/login"
+};
+</script>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><b>G</b>UARDIÃO<span class="sub">GUIA RÁPIDO</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1 class="hi"><span class="wave">👋</span> Bem-vindo! Vamos começar juntos.</h1>
+    <p class="hi-sub">É simples e no seu ritmo. Siga os passos na ordem — um de cada vez.</p>
+  </section>
+
+  <div class="continue" id="continue">
+    <div class="lbl">Continue de onde parou</div>
+    <div class="ttl" id="continueTtl">—</div>
+    <button id="continueBtn">▶ Continuar</button>
+  </div>
+
+  <section class="search">
+    <p class="search-lbl">Qual é a sua dúvida?</p>
+    <p class="search-hint">Escreva com suas palavras (ex.: “como tirar meu dinheiro”) que eu levo você direto na aula certa.</p>
+    <div class="search-box">
+      <span class="mag">🔍</span>
+      <input id="q" type="search" inputmode="search" autocomplete="off"
+        placeholder="Digite aqui a sua dúvida…" aria-label="Buscar sua dúvida" />
+    </div>
+    <div class="chips" id="chips"></div>
+    <div class="results" id="results"></div>
+  </section>
+
+  <section class="sec">
+    <div class="kick">Comece aqui</div>
+    <h2>Primeiros Passos</h2>
+    <p>Os 6 passos essenciais para o Guardião trabalhar por você.</p>
+  </section>
+  <div class="prog">
+    <div class="bar"><div class="fill" id="progFill"></div></div>
+    <div class="txt" id="progTxt">0 de 6</div>
+  </div>
+  <div class="steps" id="steps"></div>
+
+  <section class="sec"><h2 style="font-size:21px">Aprenda mais <span style="color:var(--muted-2);font-weight:700;font-size:16px">(opcional)</span></h2></section>
+
+  <details class="group">
+    <summary>📈 Curso de Trading (passo a passo) <span class="arw">▾</span></summary>
+    <div class="inner"><div class="list" id="curso"></div></div>
+  </details>
+
+  <details class="group" style="margin-top:12px">
+    <summary>⭐ Extras <span class="arw">▾</span></summary>
+    <div class="inner"><div class="list" id="extras"></div></div>
+  </details>
+
+  <div class="full">
+    <p class="t">Quer ver TODAS as aulas completas?</p>
+    <p class="s">Entre na sua área de membros completa, com todos os módulos.</p>
+    <a id="fullLink" href="#">🔓 Entrar na área completa</a>
+  </div>
+
+  <p class="foot">
+    Precisa de ajuda com qualquer coisa?<br>
+    Toque no botão verde <b>“Ajuda”</b> aqui embaixo. Estamos com você. 💚
+  </p>
+</main>
+
+<button class="fab" id="fab" aria-label="Falar com o suporte">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.05L2 22l5.1-1.34A10 10 0 1 0 12 2Zm5.2 14.13c-.22.62-1.27 1.19-1.76 1.23-.47.05-.9.23-3.02-.63-2.55-1.03-4.16-3.66-4.28-3.83-.13-.17-1.02-1.36-1.02-2.6 0-1.23.65-1.84.88-2.09.23-.25.5-.31.67-.31l.48.01c.15 0 .36-.06.56.43.22.53.73 1.83.8 1.96.06.13.1.28.02.45-.08.17-.13.28-.25.43l-.37.43c-.12.12-.25.26-.11.5.14.25.62 1.02 1.33 1.66.91.81 1.68 1.07 1.92 1.19.24.12.38.1.52-.06.14-.17.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.1.06.58-.16 1.2Z"/></svg>
+  Ajuda
+</button>
+
+<!-- Lesson overlay -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true">
+  <div class="sheet" id="sheet">
+    <div class="sheet-top">
+      <span class="step-lbl" id="stepLbl"></span>
+      <button class="close" id="close" aria-label="Fechar">✕</button>
+    </div>
+    <h3 id="lTitle"></h3>
+    <div class="video" id="video"></div>
+    <div class="next-box" id="nextBox">
+      <p class="h">✅ O que fazer agora</p>
+      <p class="c" id="nextTxt"></p>
+    </div>
+    <div class="sheet-actions">
+      <button class="btn btn-done" id="markBtn">✓ Concluí este passo</button>
+      <button class="btn btn-next" id="nextBtn">Próximo passo →</button>
+      <button class="btn btn-ghost" id="helpBtn">Preciso de ajuda</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var CFG = window.GUIA_CONFIG;
+
+  /* ---------- Conteúdo (aulas reais) ---------- */
+  // type: 'yt' (id do YouTube) | 'panda' (url embed) | 'none'
+  var LESSONS = [
+    // PRIMEIROS PASSOS (essenciais) — step 1..6
+    { key:"boas-vindas", step:1, cat:"passo", icon:"👋",
+      title:"Boas-vindas + próximos passos",
+      desc:"Comece por aqui. Em poucos minutos você entende como tudo funciona.",
+      type:"yt", vid:"YlzjoIm0HYY",
+      next:"Ótimo começo! Agora vamos abrir a sua conta na corretora. Toque em “Próximo passo”.",
+      kw:["comecar","começar","inicio","início","primeiro","por onde","perdido","boas vindas","boas-vindas","apresentacao","introducao","introdução","o que e","o que é","como funciona"] },
+
+    { key:"abrir-conta", step:2, cat:"passo", icon:"📝",
+      title:"Abrir sua conta na corretora",
+      desc:"O passo a passo para criar sua conta na Hantec, com calma, na tela.",
+      type:"yt", vid:"Q86zFE_kz4E",
+      next:"Conta criada? Agora vamos colocar seu primeiro dinheiro na conta (o depósito).",
+      kw:["abrir conta","criar conta","cadastro","cadastrar","conta","corretora","hantec","registro","registrar","abertura","cadastramento"] },
+
+    { key:"deposito", step:3, cat:"passo", icon:"💰",
+      title:"Fazer seu primeiro depósito",
+      desc:"Como colocar dinheiro na sua conta para o Guardião poder operar.",
+      type:"yt", vid:"6U3zhZcIjJA",
+      next:"Dinheiro na conta? Agora vamos ativar o Guardião para ele trabalhar por você.",
+      kw:["deposito","depósito","depositar","colocar dinheiro","botar dinheiro","adicionar saldo","primeiro deposito","investir","pix","transferir","transferencia","transferência","por dinheiro","enviar dinheiro","recarregar","aporte"] },
+
+    { key:"ativar", step:4, cat:"passo", icon:"🤖",
+      title:"Ativar o Guardião (a Inteligência Artificial)",
+      desc:"Conecte o robô à sua conta. A partir daqui ele opera sozinho por você.",
+      type:"yt", vid:"15TKt4nQiNk",
+      next:"Pronto! O Guardião já está operando por você. Agora aprenda como tirar seu dinheiro quando quiser.",
+      kw:["ativar","ligar","robo","robô","ia","inteligencia","inteligência","conectar","comecar a operar","começar a operar","ativar o robo","ativar ia","guardiao","guardião","ligar o robo","por pra funcionar","colocar pra rodar","operar"] },
+
+    { key:"saque", step:5, cat:"passo", icon:"🏦",
+      title:"Como sacar seu dinheiro",
+      desc:"O jeito certo de tirar (sacar) o seu dinheiro sempre que precisar.",
+      type:"yt", vid:"c_s1rkFRlW8",
+      next:"Você já sabe o essencial! Qualquer dúvida, veja o Suporte e a Comunidade no próximo passo.",
+      kw:["saque","sacar","tirar dinheiro","retirar","receber","resgatar","pegar meu dinheiro","retirada","tirar meu dinheiro","como recebo","levantar","sacar dinheiro"] },
+
+    { key:"suporte", step:6, cat:"passo", icon:"💬",
+      title:"Suporte, Comunidade e LIVE OURO",
+      desc:"Onde pedir ajuda, falar com pessoas e acompanhar as lives.",
+      type:"yt", vid:"puVIT6AHvdM",
+      next:"Tudo certo! Você concluiu os primeiros passos. 🎉 Fale com a gente sempre que precisar.",
+      kw:["suporte","ajuda","atendimento","falar com alguem","falar com alguém","problema","comunidade","grupo","live","ouro","live ouro","contato","reclamar","nao consigo","não consigo"] },
+
+    // EXTRAS
+    { key:"indicacao", cat:"extra", icon:"🎁",
+      title:"Indicação / IB — ganhar indicando",
+      desc:"Como ganhar indicando o Guardião para outras pessoas.",
+      type:"yt", vid:"osGq82UY804",
+      next:"Quer indicar para amigos? Fale com o suporte que a gente te ajuda.",
+      kw:["indicacao","indicação","indicar","ib","afiliado","ganhar indicando","convidar","amigos","comissao","comissão"] },
+
+    { key:"guardiao-pro", cat:"extra", icon:"🚀",
+      title:"Ative seu GUARDIÃO PRO",
+      desc:"A versão PRO, para quem quer o robô trabalhando mais forte.",
+      type:"yt", vid:"LrCvZdp2JGs",
+      next:"Ficou com dúvida sobre o PRO? Fale com o suporte.",
+      kw:["pro","guardiao pro","guardião pro","versao pro","versão pro","mais lucro","turbinar","upgrade","acelerador"] },
+
+    { key:"reprise-live", cat:"extra", icon:"🔴",
+      title:"Reprise da Live",
+      desc:"Assista de novo a última transmissão ao vivo.",
+      type:"panda", vid:"https://player-vz-350772d9-cdc.tv.pandavideo.com.br/embed/?v=4ed2f726-3a78-4101-bbb0-b783f7c5c082",
+      next:"Quer participar das próximas lives? Veja o passo “Suporte e Comunidade”.",
+      kw:["reprise","live","ao vivo","transmissao","transmissão","gravacao","gravação","assistir de novo","replay"] },
+
+    // CURSO DE TRADING
+    { key:"mercado", cat:"curso", icon:"📚", title:"Introdução ao Mercado Financeiro",
+      type:"yt", vid:"GtJZlUIs6iw", next:"Continue para a próxima aula do curso quando quiser.",
+      kw:["mercado","mercado financeiro","introducao","introdução","basico","básico","aprender","curso"] },
+    { key:"cenario-1", cat:"curso", icon:"📊", title:"Análise de Cenário 1",
+      type:"yt", vid:"Mc-h6av8eNU", next:"Siga para a Análise de Cenário 2.",
+      kw:["cenario","cenário","analise de cenario","análise de cenário","cenario 1"] },
+    { key:"cenario-2", cat:"curso", icon:"📊", title:"Análise de Cenário 2",
+      type:"yt", vid:"Xgst9D0v0RA", next:"Siga para a Análise de Cenário 3.",
+      kw:["cenario 2","analise 2","cenário 2"] },
+    { key:"cenario-3", cat:"curso", icon:"📊", title:"Análise de Cenário 3",
+      type:"yt", vid:"xL3PCTS_dZE", next:"Continue com “Como Evitar Cenários Ruins”.",
+      kw:["cenario 3","analise 3","cenário 3"] },
+    { key:"evitar-cenarios", cat:"curso", icon:"⚠️", title:"Como Evitar Cenários Ruins",
+      type:"yt", vid:"pbEHHgafCY4", next:"Continue com “Como Executar Ordens”.",
+      kw:["evitar","cenarios ruins","cenários ruins","erros","evitar erros","cuidado","perigo"] },
+    { key:"executar-ordens", cat:"curso", icon:"🎯", title:"Como Executar Ordens",
+      type:"yt", vid:"PqHyhFLBEK4", next:"Continue com a Análise Gráfica.",
+      kw:["ordens","executar","comprar","vender","operar manual","entrada"] },
+    { key:"grafica-1", cat:"curso", icon:"📉", title:"Introdução à Análise Gráfica",
+      type:"yt", vid:"7l1ffF4p8SU", next:"Siga para a Análise Gráfica — Parte 2.",
+      kw:["grafico","gráfico","analise grafica","análise gráfica","grafica 1"] },
+    { key:"grafica-2", cat:"curso", icon:"📉", title:"Análise Gráfica — Parte 2",
+      type:"yt", vid:"H1F_ivNqhDk", next:"Siga para a Análise Gráfica — Parte 3.",
+      kw:["grafica 2","gráfica 2","analise grafica 2"] },
+    { key:"grafica-3", cat:"curso", icon:"📉", title:"Análise Gráfica — Parte 3",
+      type:"yt", vid:"h2_rRtIywX8", next:"Continue com o Indicador MACD.",
+      kw:["grafica 3","gráfica 3","analise grafica 3"] },
+    { key:"macd", cat:"curso", icon:"📐", title:"Indicador MACD",
+      type:"yt", vid:"m0rWTABCEgw", next:"Continue com Gestão de Risco.",
+      kw:["macd","indicador","indicadores"] },
+    { key:"gestao-risco", cat:"curso", icon:"🛡️", title:"Gestão de Risco",
+      type:"yt", vid:"l7OR8aZYJnU", next:"Você concluiu o curso! Qualquer dúvida, fale com o suporte.",
+      kw:["gestao de risco","gestão de risco","risco","proteger","proteção","perder","stop","seguranca","segurança"] }
+  ];
+  var BY_KEY = {}; LESSONS.forEach(function(l){ BY_KEY[l.key]=l; });
+  var STEPS = LESSONS.filter(function(l){return l.cat==="passo";}).sort(function(a,b){return a.step-b.step;});
+
+  /* ---------- Progresso (localStorage) ---------- */
+  var PKEY="guia_progress_v1";
+  function loadP(){ try{ return JSON.parse(localStorage.getItem(PKEY))||{done:[],last:null}; }catch(e){ return {done:[],last:null}; } }
+  function saveP(p){ try{ localStorage.setItem(PKEY, JSON.stringify(p)); }catch(e){} }
+  var P = loadP();
+  function isDone(k){ return P.done.indexOf(k)>=0; }
+  function markDone(k){ if(!isDone(k)){ P.done.push(k); saveP(P);} }
+
+  /* ---------- Suporte ---------- */
+  function supportHref(msg){
+    var t = encodeURIComponent(msg || "Olá! Preciso de ajuda com o Guardião.");
+    if(CFG.supportWhatsapp){ return "https://wa.me/"+CFG.supportWhatsapp+"?text="+t; }
+    return "mailto:"+CFG.supportEmail+"?subject="+encodeURIComponent("Ajuda - Guardião")+"&body="+t;
+  }
+
+  /* ---------- Render: passos ---------- */
+  function normalize(s){ return (s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,""); }
+
+  function renderSteps(){
+    var el=document.getElementById("steps"); el.innerHTML="";
+    STEPS.forEach(function(l){
+      var d=isDone(l.key);
+      var c=document.createElement("div"); c.className="card"+(d?" done":"");
+      c.innerHTML=
+        '<div class="num">'+(d?"✓":l.step)+'</div>'+
+        '<div class="body">'+
+          '<p class="status">✓ Aula concluída</p>'+
+          '<p class="title">'+l.title+'</p>'+
+          '<p class="desc">'+l.desc+'</p>'+
+          '<button class="go">▶ '+(d?"Assistir de novo":"Assistir o vídeo")+'</button>'+
+        '</div>';
+      c.querySelector(".go").addEventListener("click",function(){ openLesson(l.key); });
+      el.appendChild(c);
+    });
+    updateProgress();
+  }
+  function updateProgress(){
+    var total=STEPS.length, done=STEPS.filter(function(l){return isDone(l.key);}).length;
+    document.getElementById("progFill").style.width=(done/total*100)+"%";
+    document.getElementById("progTxt").textContent=done+" de "+total;
+    // continue banner
+    var next = STEPS.find(function(l){return !isDone(l.key);}) || null;
+    var cont=document.getElementById("continue");
+    if(next && done>0){
+      cont.classList.add("show");
+      document.getElementById("continueTtl").textContent="Passo "+next.step+": "+next.title;
+      document.getElementById("continueBtn").onclick=function(){ openLesson(next.key); };
+    } else { cont.classList.remove("show"); }
+  }
+
+  function renderList(id, items){
+    var el=document.getElementById(id); el.innerHTML="";
+    items.forEach(function(l){
+      var d=isDone(l.key);
+      var r=document.createElement("button"); r.className="row"+(d?" check":"");
+      r.innerHTML='<span class="ic">'+(d?"✓":l.icon)+'</span>'+
+        '<span class="rt"><span class="t">'+l.title+'</span></span>'+
+        '<span class="chev">›</span>';
+      r.addEventListener("click",function(){ openLesson(l.key); });
+      el.appendChild(r);
+    });
+  }
+
+  /* ---------- Busca inteligente ---------- */
+  function searchLessons(query){
+    var q=normalize(query).trim();
+    if(!q) return [];
+    var terms=q.split(/\s+/).filter(Boolean);
+    var scored=LESSONS.map(function(l){
+      var hay=normalize(l.title+" "+(l.desc||"")+" "+l.kw.join(" "));
+      var score=0;
+      // keyword exact-ish
+      l.kw.forEach(function(k){ var nk=normalize(k); if(q.indexOf(nk)>=0||nk.indexOf(q)>=0) score+=6; });
+      terms.forEach(function(t){
+        if(t.length<2) return;
+        if(hay.indexOf(t)>=0) score+=2;
+        l.kw.forEach(function(k){ if(normalize(k).indexOf(t)>=0) score+=1; });
+      });
+      if(normalize(l.title).indexOf(q)>=0) score+=4;
+      return {l:l,score:score};
+    }).filter(function(x){return x.score>0;})
+      .sort(function(a,b){return b.score-a.score;});
+    return scored.slice(0,3).map(function(x){return x.l;});
+  }
+  function renderResults(query){
+    var box=document.getElementById("results");
+    if(!query.trim()){ box.classList.remove("show"); box.innerHTML=""; return; }
+    var found=searchLessons(query);
+    box.classList.add("show"); box.innerHTML="";
+    if(!found.length){
+      var e=document.createElement("div"); e.className="res-empty";
+      e.innerHTML='Não encontrei uma aula exata para isso. 🤔<br>Toque no botão verde <b>“Ajuda”</b> que a gente te responde rapidinho.';
+      box.appendChild(e); return;
+    }
+    found.forEach(function(l){
+      var stepTxt = l.step? ("Passo "+l.step) : (l.cat==="curso"?"Curso":"Extra");
+      var r=document.createElement("button"); r.className="row";
+      r.innerHTML='<span class="ic">'+l.icon+'</span>'+
+        '<span class="rt"><span class="t">'+l.title+'</span><span class="s">'+stepTxt+' · toque para assistir</span></span>'+
+        '<span class="chev">›</span>';
+      r.addEventListener("click",function(){ openLesson(l.key); });
+      box.appendChild(r);
+    });
+  }
+
+  /* ---------- Chips ---------- */
+  var CHIPS=[["💰","depósito"],["🏦","sacar"],["🤖","ativar o robô"],["📝","abrir conta"],["💬","suporte"]];
+  (function(){ var el=document.getElementById("chips");
+    CHIPS.forEach(function(c){ var b=document.createElement("button"); b.className="chip"; b.textContent=c[0]+" "+c[1];
+      b.addEventListener("click",function(){ var q=document.getElementById("q"); q.value=c[1]; renderResults(c[1]); document.getElementById("results").scrollIntoView({behavior:"smooth",block:"nearest"}); });
+      el.appendChild(b); });
+  })();
+
+  /* ---------- Overlay de aula ---------- */
+  var overlay=document.getElementById("overlay");
+  var current=null;
+  function videoHtml(l){
+    if(l.type==="yt"){
+      return '<iframe src="https://www.youtube-nocookie.com/embed/'+l.vid+'?rel=0&modestbranding=1&playsinline=1" title="'+l.title+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+    }
+    if(l.type==="panda"){
+      return '<iframe src="'+l.vid+'" title="'+l.title+'" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+    }
+    return '<div class="novid">📄 Esta etapa não tem vídeo — é só seguir a orientação abaixo.</div>';
+  }
+  function openLesson(key){
+    var l=BY_KEY[key]; if(!l) return;
+    current=l; P.last=key; saveP(P);
+    document.getElementById("stepLbl").textContent = l.step? ("Passo "+l.step+" de "+STEPS.length) : (l.cat==="curso"?"Curso de Trading":"Extra");
+    document.getElementById("lTitle").textContent=l.title;
+    document.getElementById("video").innerHTML=videoHtml(l);
+    document.getElementById("nextTxt").textContent=l.next||"Quando terminar, volte e escolha o próximo passo.";
+    // mark button state
+    var mb=document.getElementById("markBtn");
+    mb.classList.toggle("is-done", isDone(l.key));
+    mb.textContent = isDone(l.key)? "✓ Passo concluído" : "✓ Concluí este passo";
+    // next button visibility
+    var nb=document.getElementById("nextBtn");
+    var nxt = nextStepOf(l);
+    if(nxt){ nb.style.display=""; nb.textContent="Próximo passo: "+nxt.title.split("(")[0].trim()+" →"; nb.onclick=function(){ openLesson(nxt.key); document.getElementById("sheet").scrollTop=0; }; }
+    else { nb.style.display="none"; }
+    overlay.classList.add("show"); document.body.style.overflow="hidden";
+    document.getElementById("sheet").scrollTop=0;
+    if(history.replaceState) history.replaceState(null,"","#aula="+key);
+  }
+  function nextStepOf(l){
+    if(l.cat!=="passo") return null;
+    return STEPS.find(function(s){return s.step===l.step+1;})||null;
+  }
+  function closeLesson(){
+    overlay.classList.remove("show"); document.body.style.overflow="";
+    document.getElementById("video").innerHTML=""; // para o vídeo
+    current=null;
+    if(history.replaceState) history.replaceState(null,"",location.pathname+location.search);
+    renderSteps(); renderList("curso",LESSONS.filter(function(l){return l.cat==="curso";}));
+    renderList("extras",LESSONS.filter(function(l){return l.cat==="extra";}));
+  }
+  document.getElementById("close").addEventListener("click",closeLesson);
+  overlay.addEventListener("click",function(e){ if(e.target===overlay) closeLesson(); });
+  document.getElementById("markBtn").addEventListener("click",function(){
+    if(current){ markDone(current.key);
+      var mb=document.getElementById("markBtn"); mb.classList.add("is-done"); mb.textContent="✓ Passo concluído";
+      updateProgress();
+      var nxt=nextStepOf(current);
+      if(nxt){ setTimeout(function(){ openLesson(nxt.key); },350); }
+    }
+  });
+  document.getElementById("helpBtn").addEventListener("click",function(){
+    var msg = current? ("Olá! Estou na aula \""+current.title+"\" e preciso de ajuda.") : null;
+    window.open(supportHref(msg),"_blank");
+  });
+
+  /* ---------- FAB + full link ---------- */
+  document.getElementById("fab").addEventListener("click",function(){ window.open(supportHref(),"_blank"); });
+  document.getElementById("fullLink").setAttribute("href", CFG.fullMembersUrl);
+
+  /* ---------- Busca input ---------- */
+  var qEl=document.getElementById("q");
+  qEl.addEventListener("input",function(){ renderResults(qEl.value); });
+
+  /* ---------- Deep-link (#aula=KEY ou ?aula=KEY) ---------- */
+  function deepKey(){
+    var h=(location.hash||"").replace(/^#/,"");
+    var m=/(?:^|&)aula=([^&]+)/.exec(h) || /(?:^|&)aula=([^&]+)/.exec(location.search.replace(/^\?/,""));
+    return m? decodeURIComponent(m[1]) : null;
+  }
+
+  /* ---------- Init ---------- */
+  renderSteps();
+  renderList("curso",LESSONS.filter(function(l){return l.cat==="curso";}));
+  renderList("extras",LESSONS.filter(function(l){return l.cat==="extra";}));
+  var dk=deepKey();
+  if(dk && BY_KEY[dk]){ openLesson(dk); }
+  window.addEventListener("hashchange",function(){ var k=deepKey(); if(k&&BY_KEY[k]) openLesson(k); });
+})();
+</script>
+</body>
+</html>
