@@ -122,8 +122,10 @@ svg{display:block}
 .fab svg{width:25px;height:25px}
 
 /* Overlays */
-.overlay{position:fixed;inset:0;z-index:80;background:rgba(4,7,5,.66);backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center}
+.overlay{position:fixed;inset:0;z-index:80;background:rgba(4,7,5,.72);backdrop-filter:blur(5px);display:none;align-items:flex-end;justify-content:center}
 .overlay.show{display:flex}
+#offerOverlay,#lockOverlay{align-items:center;padding:20px}
+@keyframes pop{from{transform:scale(.92);opacity:.2}to{transform:scale(1);opacity:1}}
 .sheet{width:100%;max-width:var(--wrap);max-height:95vh;overflow-y:auto;background:var(--bg);border-top-left-radius:26px;border-top-right-radius:26px;border-top:1px solid var(--line-2);padding:0 16px calc(28px + env(safe-area-inset-bottom));animation:up .28s ease}
 @keyframes up{from{transform:translateY(28px)}to{transform:translateY(0)}}
 .sheet-top{position:sticky;top:0;background:var(--bg);padding:16px 0 12px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);z-index:5}
@@ -189,7 +191,7 @@ svg{display:block}
 .up-h{font-size:14px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
 
 /* Lock sheet */
-.locksheet{width:100%;max-width:var(--wrap);background:var(--bg);border-top-left-radius:26px;border-top-right-radius:26px;border-top:1px solid var(--line-2);padding:26px 20px calc(28px + env(safe-area-inset-bottom));text-align:center;animation:up .28s ease}
+.locksheet{width:100%;max-width:400px;max-height:88vh;overflow-y:auto;background:var(--surface);border:1px solid var(--line-2);border-radius:24px;box-shadow:0 24px 60px rgba(0,0,0,.6);padding:26px 22px 22px;text-align:center;animation:pop .26s ease}
 .locksheet .ring{width:76px;height:76px;border-radius:50%;background:rgba(245,197,66,.14);color:var(--gold);display:grid;place-items:center;margin:4px auto 16px}
 .locksheet .ring svg{width:38px;height:38px}
 .locksheet h3{font-size:22px;font-weight:800;margin:0 0 8px}
@@ -199,7 +201,7 @@ svg{display:block}
 .locksheet .cancel{margin-top:11px;min-height:52px;width:100%;background:transparent;border:1px solid var(--line);color:var(--muted);font-size:16px;font-weight:700;border-radius:14px}
 
 /* Offer explainer sheet */
-.offersheet{width:100%;max-width:var(--wrap);max-height:92vh;overflow-y:auto;background:var(--bg);border-top-left-radius:26px;border-top-right-radius:26px;border-top:1px solid var(--line-2);padding:22px 20px calc(26px + env(safe-area-inset-bottom));animation:up .28s ease}
+.offersheet{width:100%;max-width:410px;max-height:90vh;overflow-y:auto;background:var(--surface);border:1px solid var(--line-2);border-radius:24px;box-shadow:0 24px 60px rgba(0,0,0,.6);padding:20px 20px 20px;animation:pop .26s ease}
 .offersheet .otop{display:flex;justify-content:flex-end}
 .offersheet .otop .x{width:44px;height:44px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);color:var(--text);display:grid;place-items:center}
 .offersheet .otop .x svg{width:22px;height:22px}
@@ -210,7 +212,9 @@ svg{display:block}
 .offersheet .olist li{display:flex;gap:11px;align-items:flex-start;font-size:16px;line-height:1.4}
 .offersheet .olist li .ck{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;margin-top:1px}
 .offersheet .olist li .ck svg{width:16px;height:16px}
-.offersheet .go{display:flex;align-items:center;justify-content:center;gap:9px;min-height:60px;background:var(--gold);color:#1A1400;font-size:18px;font-weight:900;border-radius:14px}
+.offersheet .otrust{display:flex;align-items:center;justify-content:center;gap:6px;font-size:13px;color:var(--muted-2);text-align:center;margin:0 0 12px;font-weight:600}
+.offersheet .otrust svg{width:15px;height:15px;color:var(--green)}
+.offersheet .go{display:flex;align-items:center;justify-content:center;gap:9px;min-height:60px;background:var(--gold);color:#1A1400;font-size:18px;font-weight:900;border-radius:14px;box-shadow:0 8px 22px rgba(245,197,66,.28)}
 .offersheet .go svg{width:22px;height:22px}
 .offersheet .cancel{margin-top:11px;min-height:52px;width:100%;background:transparent;border:1px solid var(--line);color:var(--muted);font-size:16px;font-weight:700;border-radius:14px}
 </style>
@@ -310,6 +314,7 @@ window.GUIA_CONFIG={
     <h3 id="ofTitle"></h3>
     <p class="odesc" id="ofDesc"></p>
     <ul class="olist" id="ofList"></ul>
+    <p class="otrust" id="ofTrust"></p>
     <a class="go" id="ofGo" href="#" target="_blank" rel="noopener"><span id="icArrow3"></span> <span id="ofCta"></span></a>
     <button class="cancel" id="ofCancel">Agora não</button>
   </div>
@@ -551,12 +556,19 @@ window.GUIA_CONFIG={
 
   // Popup explicativo da oferta (a pessoa entende antes de ir pra página)
   var OFFERS={
-    mente:{tag:"Curso de Trading",title:"Mente do Guardião",desc:"O curso que te ensina a operar com segurança e a entender tudo o que o Guardião faz por você, do zero ao avançado.",items:["Análise de mercado e leitura de gráficos","Gestão de risco pra proteger o seu dinheiro","Como executar ordens e evitar cenários ruins","Aulas no seu ritmo, pra assistir quando quiser"],cta:"Ver a oferta",url:CFG.menteOffer},
-    pro:{tag:"Versão turbinada do robô",title:"Guardião PRO",desc:"O Guardião configurado no ponto máximo pra trabalhar mais forte por você e buscar resultados melhores.",items:["Robô otimizado, opera de forma mais ativa","Configuração avançada no ponto máximo","Acompanhamento e suporte de perto","Feito pra quem quer acelerar os resultados"],cta:"Ver a oferta",url:CFG.proOffer}
+    mente:{tag:"Curso completo",title:"Mente do Guardião",
+      desc:"Pare de depender da sorte. Aprenda de verdade a fazer o seu dinheiro trabalhar por você, com segurança e sem complicação, mesmo que você nunca tenha operado na vida.",
+      items:["Enxergue as melhores oportunidades lendo o mercado","Proteja o seu dinheiro com gestão de risco e opere sem medo","Saiba a hora certa de agir e fuja das armadilhas mais comuns","Do absoluto zero ao avançado, no seu ritmo","Acesso vitalício: assista quantas vezes quiser"],
+      trust:"Acesso imediato e suporte humano de verdade",cta:"Quero ver a oferta",url:CFG.menteOffer},
+    pro:{tag:"Turbine seus resultados",title:"Guardião PRO",
+      desc:"Deixe o Guardião trabalhar mais forte por você. A versão PRO aproveita muito mais oportunidades no piloto automático, pra você buscar resultados maiores sem esforço a mais.",
+      items:["Robô operando de forma mais ativa: aproveita mais chances","Configuração no ponto máximo de performance","Acompanhamento e suporte próximos, passo a passo","Ideal pra quem quer acelerar os ganhos com tranquilidade","Ativação simples: a gente te guia em tudo"],
+      trust:"Ativação guiada e suporte próximo de você",cta:"Quero ver a oferta",url:CFG.proOffer}
   };
   var offerOv=$('offerOverlay');
   function openOffer(kind){var o=OFFERS[kind];if(!o){openLock();return;}
     $('ofTag').textContent=o.tag;$('ofTitle').textContent=o.title;$('ofDesc').textContent=o.desc;$('ofCta').textContent=o.cta;$('ofGo').setAttribute("href",o.url);
+    $('ofTrust').innerHTML=ic('check')+"<span>"+(o.trust||"")+"</span>";
     var ul=$('ofList');ul.innerHTML="";o.items.forEach(function(it){var li=document.createElement("li");li.innerHTML='<span class="ck">'+ic('check')+'</span><span>'+it+'</span>';ul.appendChild(li);});
     offerOv.classList.add("show");document.body.style.overflow="hidden";}
   function closeOffer(){offerOv.classList.remove("show");restoreScroll();}
